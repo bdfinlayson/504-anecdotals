@@ -1,0 +1,2 @@
+# 504-anecdotals
+What: 504s are for students who are not classified for special education but need more time to complete assignments  Why: teachers need an easy way to keep track of and provide proof for 504 kids and present that data in a way that is easy to digest  Who: for teachers who are looking for a structured way to track type of assessments, students, time needed and allotted, notes during test, and find amount of time accumulated to answer the question: how much more time do kids need on their tests?
