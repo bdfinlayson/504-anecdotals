@@ -11,6 +11,17 @@ angular.module('myApp.home', ['ngRoute','firebase'])
 }])
 
 // Home controller
-.controller('HomeCtrl', [function() {
+.controller('HomeCtrl', ['$scope','$firebaseSimpleLogin',function($scope, $firebaseSimpleLogin) {
+
+ var firebaseObj = new Firebase("https://504-anecdotals.firebaseio.com");
+ var loginObj = $firebaseSimpleLogin(firebaseObj);
 
 }]);
+
+$scope.SignIn = function($scope) {
+ var username = $scope.user.email;
+ var password = $scope.user.password;
+
+ //auth logic will be here
+
+};
