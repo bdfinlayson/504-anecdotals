@@ -19,9 +19,21 @@ angular.module('myApp.home', ['ngRoute','firebase'])
 }]);
 
 $scope.SignIn = function($scope) {
- var username = $scope.user.email;
- var password = $scope.user.password;
-
- //auth logic will be here
+  event.preventDefault(); // to prevent form refresh
+   var username = $scope.user.email;
+   var password = $scope.user.password;
+  }
+  //auth logic is here
+  loginObj.$login('password', {
+    email: username,
+    password: password
+  })
+  .then(function(user) {
+      // Success callback
+      console.log('Authentication successful');
+  }, function(error) {
+      // Failure callback
+      console.log('Authentication failure');
+  });
 
 };
