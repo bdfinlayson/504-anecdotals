@@ -1,0 +1,1 @@
+angular.module('504', ['ngRoute']);
