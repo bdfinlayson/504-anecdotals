@@ -12,7 +12,7 @@ function authConfig($routeProvider) {
       resolve: {
         data: function ($location, authFactory) {
           if (authFactory.isLoggedIn()) {
-            $location.path('/tas')
+            $location.path('/portal')
           }
         }
       }
