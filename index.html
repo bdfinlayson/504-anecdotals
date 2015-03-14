@@ -9,9 +9,18 @@
 	</head>
 	<body>
 	  <h1>504 Annecdotals</h1>
-	  <p><a href='js/auth/login.html'>Login</a></p>
-	  <p><a href='../../index.html'>Home</a></p>
 	  <div ng-view>
+		  <p><a href='/js/auth/login.html'>Login</a></p>
+		  <p><a href='../../index.html'>Home</a></p>
 	  </div>
+
+	  <!--Dependencies -->
+	  <script src="bower_components/firebase/firebase.js"></script>
+	  <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+	  <!--App scripts -->
+	  <script src="js/main.module.js"></script>
+	  <script src="js/main.config.js"></script>
 	</body>
 </html>

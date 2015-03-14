@@ -5,7 +5,7 @@ angular
 function AnnecdotalsConfig($routeProvider) {
 	'use strict';
 	$routeProvider
-	  .when('/', { //TODO: look into how to rename
+	  .when('/', { //TODO: look into how to rename link
 	    templateUrl: 'index.html',
 	    controller: 'HomeController',
 	    controllerAs: 'home',
