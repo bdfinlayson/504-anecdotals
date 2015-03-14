@@ -5,12 +5,12 @@ angular
 function AnecdotalsConfig($routeProvider) {
 	'use strict';
 	$routeProvider
-	  // .when('/', { //TODO: look into how to rename link
-	  //   templateUrl: 'index.html',
-	  //   controller: 'AuthController',
-	  //   controllerAs: 'auth',
-	  //   private: true
-	  // })
+	  .when('/', { //TODO: look into how to rename link
+	    templateUrl: 'index.html',
+	    controller: 'AuthController',
+	    controllerAs: 'auth',
+	    private: false
+	  })
 	  .when('/privacy', {
 	  	templateUrl: '/js/terms/privacy.html',
 	  	controller: 'TermsController',

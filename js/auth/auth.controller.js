@@ -16,7 +16,7 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
       } else {
         console.log('Logged in successfully', authData);
         $rootScope.user = authData;
-        $location.path('/tas');
+        $location.path('/portal');
         $scope.$apply();
       }
     });
