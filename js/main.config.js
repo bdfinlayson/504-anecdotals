@@ -7,8 +7,8 @@ function AnnecdotalsConfig($routeProvider) {
 	$routeProvider
 	  .when('/', { //TODO: look into how to rename link
 	    templateUrl: 'index.html',
-	    controller: 'HomeController',
-	    controllerAs: 'home',
+	    controller: 'AuthController',
+	    controllerAs: 'auth',
 	    private: true
 	  })
 	  .when('/login', {
