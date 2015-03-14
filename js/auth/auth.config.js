@@ -4,6 +4,7 @@ angular
   .run(privateRoutes);
 
 function authConfig($routeProvider) {
+  'use strict';
   $routeProvider
     .when('/login', {
       templateUrl: 'js/auth/login.html',
@@ -12,7 +13,7 @@ function authConfig($routeProvider) {
       resolve: {
         data: function ($location, authFactory) {
           if (authFactory.isLoggedIn()) {
-            $location.path('/portal')
+            $location.path('/portal');
           }
         }
       }
@@ -32,9 +33,11 @@ function authConfig($routeProvider) {
      controller: 'AuthController',
      controllerAs: 'auth',
      private: false
-    })}
+    });
+  }
 
 function privateRoutes($rootScope, $location, authFactory) {
+  'use strict';
   $rootScope.$on('$routeChangeStart', function (event, nextRoute) {
 
     $rootScope.user = authFactory.getAuth();
