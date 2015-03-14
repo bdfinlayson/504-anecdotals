@@ -20,8 +20,19 @@ function authConfig($routeProvider) {
     .when('/logout', {
       template: '',
       controller: 'LogoutController'
-    });
-}
+    })
+    .when('/register', {
+     templateUrl: '/js/auth/register.html',
+     controller: 'AuthController',
+     controllerAs: 'auth',
+     private: false
+    })
+      .when('/forgot', {
+     templateUrl: '/js/auth/forgot.html',
+     controller: 'AuthController',
+     controllerAs: 'auth',
+     private: false
+    })}
 
 function privateRoutes($rootScope, $location, authFactory) {
   $rootScope.$on('$routeChangeStart', function (event, nextRoute) {
