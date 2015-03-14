@@ -1,1 +1,1 @@
-angular.module('annecdotals', ['ngRoute']);
+angular.module('anecdotals', ['ngRoute']);

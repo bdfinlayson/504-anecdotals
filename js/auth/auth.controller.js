@@ -1,5 +1,5 @@
 angular
-  .module('annecdotals')
+  .module('anecdotals')
   .controller('AuthController', AuthController);
 
 function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {

@@ -1,8 +1,8 @@
 angular
-  .module('annecdotals')
-  .config(AnnecdotalsConfig);
+  .module('anecdotals')
+  .config(AnecdotalsConfig);
 
-function AnnecdotalsConfig($routeProvider) {
+function AnecdotalsConfig($routeProvider) {
 	'use strict';
 	$routeProvider
 	  .when('/', { //TODO: look into how to rename link
