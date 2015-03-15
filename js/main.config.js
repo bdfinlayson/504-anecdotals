@@ -7,20 +7,20 @@ function AnecdotalsConfig($routeProvider) {
 	$routeProvider
 	  .when('/privacy', {
 	  	templateUrl: '/js/terms/privacy.html',
-	  	controller: 'TermsController',
-	  	controllerAs: 'terms',
+	  	controller: 'AuthController',
+	  	controllerAs: 'auth',
 	  	private: false
 	  })
 	  .when('/terms', {
 	  	templateUrl: '/js/terms/terms.html',
-	  	controller: 'TermsController',
-	  	controllerAs: 'terms',
+	  	controller: 'AuthController',
+	  	controllerAs: 'auth',
 	  	private: false
 	  })
 	  .when('/portal', {
 	  	templateUrl: '/js/portal/portal.html',
-	  	controller: 'TermsController',
-	  	controllerAs: 'terms',
+	  	controller: 'AuthController',
+	  	controllerAs: 'auth',
 	  	private: false
 	  })
 	  .otherwise({
