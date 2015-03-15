@@ -1,17 +1,17 @@
 <form name='registerForm' ng-submit='auth.register()' novalidate>
   <h2>Sign Up</h2>
   <div>
-    <input type='email' placeholder='Email address' required>
+    <input ng-model='auth.user.email' type='email' placeholder='Email address' required>
   </div>
   <div>
-    <input type='password' placeholder='Password' required>
+    <input ng-model='auth.user.password' type='password' placeholder='Password' required>
   </div>
   <div>
     <input type='password' placeholder='Retype password' required>
   </div>
   <div>
     Remember me: <input type='checkbox' value='Remember Me'>
-    <input type='submit' value='Create Account'>
+    <input ng-click="auth.register()" type='submit' value='Create Account'>
   </div>
   <div>
   </div>

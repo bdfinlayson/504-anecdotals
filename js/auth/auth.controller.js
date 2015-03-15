@@ -23,7 +23,9 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
   };
 
   vm.register = function () {
+    console.log('The register function was fired')
     authFactory.register(vm.user, function (err, authData) {
+      console.log(err, authData)
       if (err && err.code === 'EMAIL_TAKEN') {
         console.log('Error creating user:', err);
         vm.login();

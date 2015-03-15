@@ -13,26 +13,27 @@ function authConfig($routeProvider) {
       resolve: {
         data: function ($location, authFactory) {
           if (authFactory.isLoggedIn()) {
+            console.log('user is logged in! Redirecting to portal!')
             $location.path('/portal');
           }
         }
       }
     })
     .when('/logout', {
-      template: '',
+      template: 'js/auth/logout.html',
       controller: 'LogoutController'
     })
     .when('/register', {
-     templateUrl: '/js/auth/register.html',
-     controller: 'AuthController',
-     controllerAs: 'auth',
-     private: false
+      templateUrl: '/js/auth/register.html',
+      controller: 'AuthController',
+      controllerAs: 'auth',
+      private: false
     })
       .when('/forgot', {
-     templateUrl: '/js/auth/forgot.html',
-     controller: 'AuthController',
-     controllerAs: 'auth',
-     private: false
+      templateUrl: '/js/auth/forgot.html',
+      controller: 'AuthController',
+      controllerAs: 'auth',
+      private: false
     });
   }
 

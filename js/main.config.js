@@ -5,12 +5,6 @@ angular
 function AnecdotalsConfig($routeProvider) {
 	'use strict';
 	$routeProvider
-	  .when('/', { //TODO: look into how to rename link
-	    templateUrl: 'index.html',
-	    controller: 'AuthController',
-	    controllerAs: 'auth',
-	    private: false
-	  })
 	  .when('/privacy', {
 	  	templateUrl: '/js/terms/privacy.html',
 	  	controller: 'TermsController',
@@ -23,7 +17,13 @@ function AnecdotalsConfig($routeProvider) {
 	  	controllerAs: 'terms',
 	  	private: false
 	  })
+	  .when('/portal', {
+	  	templateUrl: '/js/portal/portal.html',
+	  	controller: 'TermsController',
+	  	controllerAs: 'terms',
+	  	private: false
+	  })
 	  .otherwise({
-	  	redirectTo: '/'
+	  	redirectTo: '/login'
 	  });
 }
