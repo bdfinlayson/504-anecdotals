@@ -17,12 +17,12 @@ function AnecdotalsConfig($routeProvider) {
 	  	controllerAs: 'auth',
 	  	private: false
 	  })
-	  .when('/portal', {
-	  	templateUrl: '/js/portal/portal.html',
-	  	controller: 'AuthController',
-	  	controllerAs: 'auth',
-	  	private: false
-	  })
+	  // .when('/portal', {
+	  // 	templateUrl: '/js/portal/portal.html',
+	  // 	controller: 'AuthController',
+	  // 	controllerAs: 'auth',
+	  // 	private: true
+	  // })
 	  .otherwise({
 	  	redirectTo: '/login'
 	  });
