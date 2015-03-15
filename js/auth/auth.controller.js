@@ -50,10 +50,10 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
     });
   };
 
-  vm.initializeUser = function (data) {
+  // vm.initializeUser = function (data) {
 
-    authFactory.initializeUserToFb( function (data) {
-      console.log('User initialized in FB!', data);
-    });
-  };
+  //   authFactory.initializeUserToFb( function (data) {
+  //     console.log('User initialized in FB!', data);
+  //   });
+  // };
 }
