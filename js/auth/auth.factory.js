@@ -31,9 +31,35 @@ function authFactory($rootScope, $http, BASE_URL) {
     },
 
     register: function (user, cb) {
+      console.log('Data from the register factory:', user, cb);
       var fb = new Firebase(BASE_URL);
 
       fb.createUser(user, cb);
+      sendToFb(user);
+
+      function sendToFb(user) {
+        console.log('Data in the send to Fb function', user);
+        fb.authWithPassword(user, function(error, authData) {
+           if (error) {
+        console.log("Login Failed!", error);
+        } else {
+        console.log("Authenticated successfully with payload:", authData);
+           $http
+             .post(BASE_URL + '/users.json', authData)
+             .success(function () {
+             console.log('You posted a new user to firebase with the following data: ', authData);
+        });
+
+
+          // fb.child('users').child(authData.token).set({
+          //   userName: authData.uid
+          // });
+          console.log('attempted to send user to fb');
+        }
+        });
+        //var data = fb.getAuth();
+        //console.log('What is data at this point?', data)
+      }
     },
 
     forgotPassword: function (user, cb) {

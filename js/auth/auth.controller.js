@@ -18,13 +18,13 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
         $rootScope.user = authData;
         $location.path('/portal');
         $scope.$apply();
-        vm.initializeUser();
+        //vm.initializeUser();
       }
     });
   };
 
   vm.register = function () {
-    console.log('The register function was fired')
+    console.log('The register function was fired');
     authFactory.register(vm.user, function (err, authData) {
     console.log(err, authData);
     console.log('User info from AuthController.register', vm.user);
