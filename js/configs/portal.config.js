@@ -6,37 +6,37 @@ function PortalConfig($routeProvider) {
 	'use strict';
 	$routeProvider
 	  .when('/portal', {
-	  	templateUrl: '/js/portal/portal.html',
+	  	templateUrl: '/js/views/portal.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true
 	  })
 	  .when('/settings', {
-	  	templateUrl: '/js/portal/settings.html',
+	  	templateUrl: '/js/views/settings.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true
 	  })
 	  .when('/classes', {
-	  	templateUrl: '/js/portal/classes.html',
+	  	templateUrl: '/js/views/classes.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true
 	  })
 	  .when('/students', {
-	  	templateUrl: '/js/portal/students.html',
+	  	templateUrl: '/js/views/students.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true
 	  })
 	  .when('/tests', {
-	  	templateUrl: '/js/portal/tests.html',
+	  	templateUrl: '/js/views/tests.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true
 	  })
 	  .when('/data', {
-	  	templateUrl: '/js/portal/data.html',
+	  	templateUrl: '/js/views/data.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: true

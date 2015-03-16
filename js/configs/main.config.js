@@ -6,19 +6,19 @@ function AnecdotalsConfig($routeProvider) {
 	'use strict';
 	$routeProvider
 	  .when('/privacy', {
-	  	templateUrl: '/js/terms/privacy.html',
+	  	templateUrl: '/js/views/privacy.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: false
 	  })
 	  .when('/terms', {
-	  	templateUrl: '/js/terms/terms.html',
+	  	templateUrl: '/js/views/terms.html',
 	  	controller: 'AuthController',
 	  	controllerAs: 'auth',
 	  	private: false
 	  })
 	  // .when('/portal', {
-	  // 	templateUrl: '/js/portal/portal.html',
+	  // 	templateUrl: '/js/views/portal.html',
 	  // 	controller: 'AuthController',
 	  // 	controllerAs: 'auth',
 	  // 	private: true
