@@ -25,17 +25,21 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
 
   vm.register = function () {
     console.log('The register function was fired');
+
     authFactory.register(vm.user, function (err, authData) {
-    console.log(err, authData);
-    console.log('User info from AuthController.register', vm.user);
+        console.log(err, authData);
+        console.log('User info from AuthController.register', vm.user);
       if (err && err.code === 'EMAIL_TAKEN') {
         console.log('Error creating user:', err);
-        vm.login();
+        //vm.login();
       } else if (err) {
         console.log('Error creating user:', err);
       } else {
         console.log('User created successfully', authData);
-        vm.login();
+         //send user uid to fb to construct new user object
+         // authFactory.makeNewFbUser(authData, vm.user);
+         //log new user into app
+         vm.login();
       }
     });
   };

@@ -35,6 +35,7 @@ function authFactory($rootScope, $http, BASE_URL) {
       var fb = new Firebase(BASE_URL);
 
       fb.createUser(user, cb);
+
       sendToFb(user);
 
       function sendToFb(user) {
@@ -44,11 +45,24 @@ function authFactory($rootScope, $http, BASE_URL) {
         console.log("Login Failed!", error);
         } else {
         console.log("Authenticated successfully with payload:", authData);
-           $http
-             .post(BASE_URL + '/users.json', authData)
-             .success(function () {
-             console.log('You posted a new user to firebase with the following data: ', authData);
-        });
+        
+          fb.child('users').child(authData.uid).set({
+            'email': authData.password.email,
+            'userId': authData.uid,
+            'expires': authData.expires,
+            'token': authData.token
+            });
+
+        //    $http
+        //      .post(BASE_URL + '/users/' + authData.uid + '.json', {
+        //         'email': authData.password.email,
+        //         'userId': authData.uid,
+        //         'expires': authData.expires,
+        //         'token': authData.token
+        //         })
+        //      .success(function () {
+        //      console.log('You posted a new user to firebase with the following data: ', authData);
+        // });
 
 
           // fb.child('users').child(authData.token).set({
@@ -67,6 +81,15 @@ function authFactory($rootScope, $http, BASE_URL) {
 
       fb.resetPassword(user, cb);
     },
+    // makeNewFbUser: function (authData, user) {
+    //   console.log('MakeNewFbUser data sent from the controller: ', authdata, user);
+    // }
+  };
+}
+
+
+
+
     // initializeUserToFb: function () {
     //   var authData = $rootScope.user;
     //   // console.log('Info from initializeUserToFb', authData)
@@ -78,5 +101,4 @@ function authFactory($rootScope, $http, BASE_URL) {
     //       console.log('You posted a new user to firebase with the following data: ', authData);
     //   });
     // }
-  };
-}
+
