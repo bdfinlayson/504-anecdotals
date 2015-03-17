@@ -2,8 +2,9 @@ angular
   .module('anecdotals')
   .factory('idFactory', idFactory);
 
-function idFactory (BASE_URL){
+function idFactory (user){
 	'use strict';
+  console.log('User data from the auth factory to the id factory: ', user);
 	var currCounter;
 	//get current id integer from fb
 	var fb = $.getJSON('https://504-anecdotals.firebaseio.com/idCounter.json', function (data) {
@@ -11,7 +12,7 @@ function idFactory (BASE_URL){
 		currCounter = data; // assigns data to current counter
 		console.log(currCounter);
 		console.log(fb); //contains response json object
-		assignIntToNewModel(data);
+		assignIntToNewModel(data, user);
 	});
 
 
@@ -23,16 +24,16 @@ function idFactory (BASE_URL){
 
 }//assign current id integer to new model instance
 
-   function assignIntToNewModel(data) {
+   function assignIntToNewModel(data, user) {
     'use strict';
     //get url location of current window
     console.log(data);
     var currWindow = window.location;
     var currUrl = currWindow.href;
     console.log(currUrl);
-    checkForInstance(data, currUrl);
+    checkForInstance(data, currUrl, user);
     //check for which instance to assign the integer to, then create the new model
-      function checkForInstance(data, currUrl) {
+      function checkForInstance(data, currUrl, user) {
         console.log(data, currUrl);
         switch(true) {
           case (currUrl.includes('classes')):
@@ -72,6 +73,21 @@ function idFactory (BASE_URL){
               'testId': data
             });
             alert('New test created with id of: ' + 'test:' + data);
+            //increment the id counter
+            data++;
+            console.log('Counter was incremented to: ', data);
+            //send the incremented counter to fb
+            fb.update({
+              'idCounter': data
+            });
+            break;
+          case (currUrl.includes('register')):
+            //generate child url and send class id to fb
+            var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
+            fb.child('teachers').child('teacher:' + data).set({
+              'teacherId': data
+            });
+            alert('New teacher created with id of: ' + 'teacher:' + data);
             //increment the id counter
             data++;
             console.log('Counter was incremented to: ', data);

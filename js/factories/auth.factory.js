@@ -31,49 +31,53 @@ function authFactory($rootScope, $http, BASE_URL) {
     },
 
     register: function (user, cb) {
+      //register user on firebase
       console.log('Data from the register factory:', user, cb);
       var fb = new Firebase(BASE_URL);
 
       fb.createUser(user, cb);
 
-      sendToFb(user);
+      //make id for new user
+      idFactory(user);
 
-      function sendToFb(user) {
-        console.log('Data in the send to Fb function', user);
-        fb.authWithPassword(user, function(error, authData) {
-           if (error) {
-        console.log("Login Failed!", error);
-        } else {
-        console.log("Authenticated successfully with payload:", authData);
+      // sendToFb(user);
 
-          fb.child('users').child(authData.uid).set({
-            'email': authData.password.email,
-            'userId': authData.uid,
-            'expires': authData.expires,
-            'token': authData.token
-            });
+      // function sendToFb(user) {
+      //   console.log('Data in the send to Fb function', user);
+      //   fb.authWithPassword(user, function(error, authData) {
+      //      if (error) {
+      //   console.log("Login Failed!", error);
+      //   } else {
+      //   console.log("Authenticated successfully with payload:", authData);
 
-        //    $http
-        //      .post(BASE_URL + '/users/' + authData.uid + '.json', {
-        //         'email': authData.password.email,
-        //         'userId': authData.uid,
-        //         'expires': authData.expires,
-        //         'token': authData.token
-        //         })
-        //      .success(function () {
-        //      console.log('You posted a new user to firebase with the following data: ', authData);
-        // });
+      //     fb.child('users').child(authData.uid).set({
+      //       'email': authData.password.email,
+      //       'userId': authData.uid,
+      //       'expires': authData.expires,
+      //       'token': authData.token
+      //       });
+
+      //   //    $http
+      //   //      .post(BASE_URL + '/users/' + authData.uid + '.json', {
+      //   //         'email': authData.password.email,
+      //   //         'userId': authData.uid,
+      //   //         'expires': authData.expires,
+      //   //         'token': authData.token
+      //   //         })
+      //   //      .success(function () {
+      //   //      console.log('You posted a new user to firebase with the following data: ', authData);
+      //   // });
 
 
-          // fb.child('users').child(authData.token).set({
-          //   userName: authData.uid
-          // });
-          console.log('attempted to send user to fb');
-        }
-        });
-        //var data = fb.getAuth();
-        //console.log('What is data at this point?', data)
-      }
+      //     // fb.child('users').child(authData.token).set({
+      //     //   userName: authData.uid
+      //     // });
+      //     console.log('attempted to send user to fb');
+      //   }
+      //   });
+      //   //var data = fb.getAuth();
+      //   //console.log('What is data at this point?', data)
+      // }
     },
 
     forgotPassword: function (user, cb) {
