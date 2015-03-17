@@ -38,6 +38,9 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
         console.log('User created successfully', authData);
          //send user uid to fb to construct new user object
          // authFactory.makeNewFbUser(authData, vm.user);
+
+         //make new id for user
+         idFactory(vm.user);
          //log new user into app
          vm.login();
       }

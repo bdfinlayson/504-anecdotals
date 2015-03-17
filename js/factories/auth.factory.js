@@ -32,13 +32,13 @@ function authFactory($rootScope, $http, BASE_URL) {
 
     register: function (user, cb) {
       //register user on firebase
-      console.log('Data from the register factory:', user, cb);
+      console.log('Data from the register factory:', user);
       var fb = new Firebase(BASE_URL);
 
       fb.createUser(user, cb);
 
       //make id for new user
-      idFactory(user);
+      //idFactory(user);
 
       // sendToFb(user);
 

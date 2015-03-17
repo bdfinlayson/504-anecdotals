@@ -85,7 +85,9 @@ function idFactory (user){
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('teachers').child('teacher:' + data).set({
-              'teacherId': data
+              'teacherId': data,
+              'email': user.email,
+              'password': user.password
             });
             alert('New teacher created with id of: ' + 'teacher:' + data);
             //increment the id counter
