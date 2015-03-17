@@ -45,7 +45,7 @@ function authFactory($rootScope, $http, BASE_URL) {
         console.log("Login Failed!", error);
         } else {
         console.log("Authenticated successfully with payload:", authData);
-        
+
           fb.child('users').child(authData.uid).set({
             'email': authData.password.email,
             'userId': authData.uid,
