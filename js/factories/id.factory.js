@@ -41,7 +41,37 @@ function idFactory (BASE_URL){
             fb.child('classes').child('class:' + data).set({
               'classId': data
             });
-            alert('New class created with id of: ' + 'class' + data);
+            alert('New class created with id of: ' + 'class:' + data);
+            //increment the id counter
+            data++;
+            console.log('Counter was incremented to: ', data);
+            //send the incremented counter to fb
+            fb.update({
+              'idCounter': data
+            });
+            break;
+          case (currUrl.includes('students')):
+            //generate child url and send class id to fb
+            var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
+            fb.child('students').child('student:' + data).set({
+              'studentId': data
+            });
+            alert('New student created with id of: ' + 'student:' + data);
+            //increment the id counter
+            data++;
+            console.log('Counter was incremented to: ', data);
+            //send the incremented counter to fb
+            fb.update({
+              'idCounter': data
+            });
+            break;
+          case (currUrl.includes('tests')):
+            //generate child url and send class id to fb
+            var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
+            fb.child('tests').child('test:' + data).set({
+              'testId': data
+            });
+            alert('New test created with id of: ' + 'test:' + data);
             //increment the id counter
             data++;
             console.log('Counter was incremented to: ', data);
