@@ -19,20 +19,20 @@ function PortalConfig($routeProvider) {
 	  })
 	  .when('/classes', {
 	  	templateUrl: '/js/views/classes.html',
-	  	controller: 'AuthController',
-	  	controllerAs: 'auth',
+	  	controller: 'NewController',
+	  	controllerAs: 'new',
 	  	private: true
 	  })
 	  .when('/students', {
 	  	templateUrl: '/js/views/students.html',
-	  	controller: 'AuthController',
-	  	controllerAs: 'auth',
+	  	controller: 'NewController',
+	  	controllerAs: 'new',
 	  	private: true
 	  })
 	  .when('/tests', {
 	  	templateUrl: '/js/views/tests.html',
-	  	controller: 'AuthController',
-	  	controllerAs: 'auth',
+	  	controller: 'NewController',
+	  	controllerAs: 'new',
 	  	private: true
 	  })
 	  .when('/data', {

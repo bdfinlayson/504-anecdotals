@@ -6,6 +6,7 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
 	'use strict';
 
 	var vm = this;
+  console.log('this is the this or vm in the authcontroller: ', vm)
 
 	vm.user = {};
 

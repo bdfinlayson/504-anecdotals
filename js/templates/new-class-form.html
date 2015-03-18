@@ -1,0 +1,12 @@
+<form name='newClassForm' ng-controller='NewController as new' ng-submit='new.submit()'>
+  <label>Class Name:</label>
+  <input ng-model='new.thing.name' type='text' placeholder='Class name'>
+  <br />
+  <label>Subject Type:</label>
+  <input ng-model='new.thing.type' type='text' placeholder='Subject'>
+  <br />
+  <label>Grade Level:</label>
+  <input ng-model='new.thing.gradeLevel' type='text' placeholder='Grade level'>
+  <br />
+  <input ng-click='new.submit()' type='submit' value='Submit'>
+</form>

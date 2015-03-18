@@ -1,8 +1,26 @@
 angular
   .module('anecdotals')
-  .factory('idFactory', idFactory);
+  .controller('NewController', NewController);
 
-function idFactory (user, thing){
+function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
+  'use strict';
+  console.log('newcontroller fired');
+
+  var vm = this;
+  console.log(vm);
+
+  vm.thing = {};
+  console.log(vm.thing);
+
+  vm.submit = function (idFactory) {
+  	var fb = new Firebase('https://504-anecdotals.firebaseio.com')
+  	var user = fb.getAuth();
+  	console.log(user);
+  	idFactory(user, vm.thing)
+  	console.log(vm.thing)
+  	  function idFactory (user, thing){
+  	  	console.log(thing)
+  	  	console.log('newcontroller fired idfactory')
 	'use strict';
   console.log('User data from the auth factory to the id factory: ', user);
 	var currCounter;
@@ -14,6 +32,8 @@ function idFactory (user, thing){
 		console.log(fb); //contains response json object
 		assignIntToNewModel(data, user, thing);
 	});
+}
+
 
 
 
@@ -41,7 +61,9 @@ function idFactory (user, thing){
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('classes').child('class:' + data).set({
               'classId': data,
-              'className': thing.name
+              'className': thing.name,
+              'classSubject': thing.type,
+              'classGradeLevel': thing.gradeLevel
             });
             alert('New class created with id of: ' + 'class:' + data);
             //increment the id counter
@@ -104,3 +126,5 @@ function idFactory (user, thing){
         }
       }
    }
+    }
+

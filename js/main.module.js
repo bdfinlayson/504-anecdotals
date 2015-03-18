@@ -1,1 +1,4 @@
-angular.module('anecdotals', ['ngRoute']);
+angular.module('anecdotals', [
+	'ngRoute'
+	// 'anecdotals.directives.newClassForm'
+	]);
