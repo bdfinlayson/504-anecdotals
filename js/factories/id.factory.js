@@ -28,6 +28,7 @@ function idFactory (user, thing){
     'use strict';
     //get url location of current window
     console.log(data);
+    console.log(data, user, thing)
     var currWindow = window.location;
     var currUrl = currWindow.href;
     console.log(currUrl);

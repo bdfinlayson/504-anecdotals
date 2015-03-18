@@ -31,6 +31,7 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
 		console.log(currCounter);
 		console.log(fb); //contains response json object
 		assignIntToNewModel(data, user, thing);
+
 	});
 }
 
@@ -48,6 +49,7 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
     'use strict';
     //get url location of current window
     console.log(data);
+    console.log(data,user,thing)
     var currWindow = window.location;
     var currUrl = currWindow.href;
     console.log(currUrl);
@@ -60,10 +62,13 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('classes').child('class:' + data).set({
-              'classId': data,
-              'className': thing.name,
-              'classSubject': thing.type,
-              'classGradeLevel': thing.gradeLevel
+              'id': "class:" + data,
+              'name': thing.name,
+              'subject': thing.type,
+              'gradeLevel': thing.gradeLevel,
+              'teacherEmail': user.password.email,
+              'teacherUid': user.uid,
+              'teacherToken': user.token
             });
             alert('New class created with id of: ' + 'class:' + data);
             //increment the id counter
@@ -78,7 +83,13 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('students').child('student:' + data).set({
-              'studentId': data
+              'id': "student:" + data,
+              'firstName': thing.firstName,
+              'lastName': thing.lastName,
+              'additionalInfo': thing.additionalInfo,
+              'teacherEmail': user.password.email,
+              'teacherUid': user.uid,
+              'teacherToken': user.token
             });
             alert('New student created with id of: ' + 'student:' + data);
             //increment the id counter
@@ -93,7 +104,16 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('tests').child('test:' + data).set({
-              'testId': data
+              'id': "test:" + data,
+              'name': thing.testName,
+              'date': thing.testDate,
+              'description': thing.type,
+              'commonCore': thing.commonCore,
+              'standardTime': thing.standardTime,
+              'teacherEmail': user.password.email,
+              'teacherUid': user.uid,
+              'teacherToken': user.token
+
             });
             alert('New test created with id of: ' + 'test:' + data);
             //increment the id counter
@@ -108,7 +128,7 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('teachers').child('teacher:' + data).set({
-              'teacherId': data,
+              'id': "teacher:" + data,
               'email': user.email,
               'password': user.password
             });

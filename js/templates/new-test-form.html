@@ -1,0 +1,21 @@
+<form name='newTestForm' ng-submit='new.submit()'>
+  <label>Test Name:</label>
+  <input ng-model='new.thing.testName' type='text' placeholder='Test name'>
+  <br />
+  <label>Test Date:</label>
+  <input ng-model='new.thing.testDate' type='text' placeholder='test date'>
+  <br />
+  <label>Test Description:</label>
+  <input ng-model='new.thing.testDescription' type='text' placeholder='description'>
+  <br />
+  <label>Type:</label>
+  <input ng-model='new.thing.type' type='text' placeholder='type of test'>
+  <br />
+  <label>Common Core Standards Covered:</label>
+  <input ng-model='new.thing.commonCore' type='text' placeholder='standards covered'>
+  <br />
+  <label>Standard Time Allotted:</label>
+  <input ng-model='new.thing.standardTime' type='number' placeholder='minutes'>
+  <br />
+  <input ng-click='new.submit()' type='submit' value='Submit'>
+</form>

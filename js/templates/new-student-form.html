@@ -1,0 +1,12 @@
+<form name='newStudentForm' ng-submit='new.submit()'>
+  <label>First Name:</label>
+  <input ng-model='new.thing.firstName' type='text' placeholder='First name'>
+  <br />
+  <label>Last Name:</label>
+  <input ng-model='new.thing.lastName' type='text' placeholder='Last name'>
+  <br />
+  <label>Additional Information:</label>
+  <input ng-model='new.thing.additionalInfo' type='text' placeholder='additional info'>
+  <br />
+  <input ng-click='new.submit()' type='submit' value='Submit'>
+</form>
