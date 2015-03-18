@@ -28,7 +28,7 @@ function idFactory (user, thing){
     'use strict';
     //get url location of current window
     console.log(data);
-    console.log(data, user, thing)
+    console.log(data, user, thing);
     var currWindow = window.location;
     var currUrl = currWindow.href;
     console.log(currUrl);
@@ -87,11 +87,28 @@ function idFactory (user, thing){
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
             fb.child('teachers').child('teacher:' + data).set({
-              'teacherId': data,
+              'teacherId': 'teacher:' + data,
               'email': user.email,
-              'password': user.password
+              'password': user.password,
+              'profileId': "profile:" + data,
+              'firstName': user.firstName,
+              'lastName': user.lastName,
+              'schoolDistrict': user.schoolDistrict,
+              'zipCode': user.zipCode
+
+            });
+            fb.child('profiles').child('profile:' + data).set({
+              'teacherId': 'teacher:' + data,
+              'email': user.email,
+              'password': user.password,
+              'profileId': "profile:" + data,
+              'firstName': user.firstName,
+              'lastName': user.lastName,
+              'schoolDistrict': user.schoolDistrict,
+              'zipCode': user.zipCode
             });
             alert('New teacher created with id of: ' + 'teacher:' + data);
+            alert('New profile created with the id of: ' + 'profile:' + data);
             //increment the id counter
             data++;
             console.log('Counter was incremented to: ', data);

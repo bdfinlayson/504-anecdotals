@@ -1,6 +1,18 @@
 <form name='registerForm' ng-submit='auth.register()' novalidate>
   <h2>Sign Up</h2>
   <div>
+    <input ng-model='auth.user.firstName' type='text' placeholder='First Name' required>
+  </div>
+  <div>
+    <input ng-model='auth.user.lastName' type='text' placeholder='Last Name' required>
+  </div>
+  <div>
+    <input ng-model='auth.user.schoolDistrict' type='text' placeholder='School district' required>
+  </div>
+  <div>
+    <input ng-model='auth.user.zipCode' type='text' placeholder='Zip code' required>
+  </div>
+  <div>
     <input ng-model='auth.user.email' type='email' placeholder='Email address' required>
   </div>
   <div>

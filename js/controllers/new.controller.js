@@ -130,7 +130,30 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             fb.child('teachers').child('teacher:' + data).set({
               'id': "teacher:" + data,
               'email': user.email,
-              'password': user.password
+              'password': user.password,
+              'firstName': user.firstName,
+              'lastName': user.lastName
+            });
+            alert('New teacher created with id of: ' + 'teacher:' + data);
+            //increment the id counter
+            data++;
+            console.log('Counter was incremented to: ', data);
+            //send the incremented counter to fb
+            fb.update({
+              'idCounter': data
+            });
+            break;
+          case (currUrl.includes('profile')):
+            //generate child url and send class id to fb
+            var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
+            fb.child('profile').child('profile:' + data).set({
+              'id': "profile:" + data,
+              'ownerEmail': user.password.email,
+              'ownerUid': user.uid,
+              'ownerToken': user.token,
+              'firstName': thing.firstName,
+              'lastName': thing.lastName,
+              'schoolDistrict': thing.schoolDistrict
             });
             alert('New teacher created with id of: ' + 'teacher:' + data);
             //increment the id counter
