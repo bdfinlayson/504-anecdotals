@@ -41,7 +41,7 @@ function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
          // authFactory.makeNewFbUser(authData, vm.user);
 
          //make new id for user
-         idFactory(vm.user);
+         idFactory(vm.user, authData);
          //log new user into app
          vm.login();
       }

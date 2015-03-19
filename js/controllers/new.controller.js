@@ -70,6 +70,8 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
               'teacherUid': user.uid,
               'teacherToken': user.token
             });
+            // var classes;
+            // fb.child('teachers').child('teacher:37').child('classes').once('value', function(snapshot) { newClasses = snapshot.val(); });
             alert('New class created with id of: ' + 'class:' + data);
             //increment the id counter
             data++;
@@ -170,4 +172,3 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
       }
    }
     }
-

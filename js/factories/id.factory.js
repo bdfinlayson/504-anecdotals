@@ -2,7 +2,7 @@ angular
   .module('anecdotals')
   .factory('idFactory', idFactory);
 
-function idFactory (user, thing){
+function idFactory (user, authData, thing){
 	'use strict';
   console.log('User data from the auth factory to the id factory: ', user);
 	var currCounter;
@@ -12,7 +12,7 @@ function idFactory (user, thing){
 		currCounter = data; // assigns data to current counter
 		console.log(currCounter);
 		console.log(fb); //contains response json object
-		assignIntToNewModel(data, user, thing);
+		assignIntToNewModel(data, user, authData, thing);
 	});
 
 
@@ -24,17 +24,17 @@ function idFactory (user, thing){
 
 }//assign current id integer to new model instance
 
-   function assignIntToNewModel(data, user, thing) {
+   function assignIntToNewModel(data, user, authData, thing) {
     'use strict';
     //get url location of current window
     console.log(data);
-    console.log(data, user, thing);
+    console.log(data, user, authData, thing);
     var currWindow = window.location;
     var currUrl = currWindow.href;
     console.log(currUrl);
-    checkForInstance(data, currUrl, user, thing);
+    checkForInstance(data, currUrl, user, authData, thing);
     //check for which instance to assign the integer to, then create the new model
-      function checkForInstance(data, currUrl, user, thing) {
+      function checkForInstance(data, currUrl, user, authData, thing) {
         console.log(data, currUrl, thing);
         switch(true) {
           case (currUrl.includes('classes')):
@@ -86,7 +86,7 @@ function idFactory (user, thing){
           case (currUrl.includes('register')):
             //generate child url and send class id to fb
             var fb = new Firebase ('https://504-anecdotals.firebaseio.com/');
-            fb.child('teachers').child('teacher:' + data).set({
+            fb.child('teachers').child(authData.uid).set({
               'teacherId': 'teacher:' + data,
               'email': user.email,
               'password': user.password,

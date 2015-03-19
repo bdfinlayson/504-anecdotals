@@ -1,0 +1,22 @@
+<form name='profileForm' ng-submit='update.profile()' novalidate>
+  <div>
+    <input ng-model='update.user.firstName' type='text' placeholder='First Name' required>
+  </div>
+  <div>
+    <input ng-model='update.user.lastName' type='text' placeholder='Last Name' required>
+  </div>
+  <div>
+    <input ng-model='update.user.schoolDistrict' type='text' placeholder='School district' required>
+  </div>
+  <div>
+    <input ng-model='update.user.zipCode' type='text' placeholder='Zip code' required>
+  </div>
+  <div>
+    <input ng-model='update.user.email' type='email' placeholder='Email address' required>
+  </div>
+  <div>
+    <input ng-model='update.user.password' type='password' placeholder='Password' required>
+  </div>
+  <br />
+  <input ng-click='update.profile()' type='submit' value='Submit'>
+</form>
