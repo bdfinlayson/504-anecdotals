@@ -48,6 +48,7 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
    function assignIntToNewModel(data, user, thing) {
     'use strict';
     //get url location of current window
+    var realNum = data;
     console.log(data);
     console.log(data,user,thing)
     var currWindow = window.location;
@@ -70,9 +71,21 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
               'teacherUid': user.uid,
               'teacherToken': user.token
             });
-            // var classes;
-            // fb.child('teachers').child('teacher:37').child('classes').once('value', function(snapshot) { newClasses = snapshot.val(); });
+            //assign owner to the class (teacher uid)
+            fb.child('teachers').child(user.uid).child('classes').once('value', function(snapshot) {
+              var classes = [];
+              classes = snapshot.val();
+              //prevent double submission
+              if (realNum !== data) {
+                classes.push('class:' + data);
+                fb.child('teachers').child(user.uid).child('classes').set( classes );
+            }
+              });
+
+
+            //confirm class creation
             alert('New class created with id of: ' + 'class:' + data);
+
             //increment the id counter
             data++;
             console.log('Counter was incremented to: ', data);
@@ -80,6 +93,8 @@ function NewController ($rootScope, $scope, $location, authFactory, BASE_URL) {
             fb.update({
               'idCounter': data
             });
+
+
             break;
           case (currUrl.includes('students')):
             //generate child url and send class id to fb
