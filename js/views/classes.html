@@ -4,3 +4,24 @@
 <div ng-include="'js/templates/new-class-form.html'">
 </div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Class Name</th>
+      <th>Subject</th>
+      <th>Grade Level</th>
+      <th>Teacher</th>
+      <th>Teacher Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="class in classes.data
+      | objToArr">
+      <td>{{class.name</td>
+      <td>{{class.subject}}</td>
+      <td>{{class.gradeLevel}}</td>
+      <td>{{class.teacher}}</td>
+      <td>{{class.teacherEmail}}</td>
+    </tr>
+  </tbody>
+</table>
