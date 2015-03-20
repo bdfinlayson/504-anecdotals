@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html ng-app='anecdotals'>
-	<head>
-	    <meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <!-- <title>504 Anecdotals</title> -->
-	    <link rel='stylesheet' href='css/main.css'>
-	</head>
-	<body>
-	  <h1>504 Anecdotals</h1>
-	  <a href='#/'>Home</a>
-	  <a href='#/login'>Login</a>
-	  <a href='#/logout'>Logout</a>
 
-	  <div ng-view>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <title>504 Anecdotals</title> -->
+  <link rel='stylesheet' href='css/main.css'>
+</head>
 
-	  </div>
+<body>
+  <h1>504 Anecdotals</h1>
+  <a href='#/'>Home</a>
+  <a href='#/login'>Login</a>
+  <a href='#/logout'>Logout</a>
 
-	  <!--Dependencies -->
-	  <script src="bower_components/firebase/firebase.js"></script>
-	  <script src="bower_components/angular/angular.min.js"></script>
-      <script src="bower_components/angular-route/angular-route.min.js"></script>
-      <script src='bower_components/jquery/dist/jquery.min.js'></script>
-      <script src='bower_components/ng-file-upload/angular-file-upload.min.js'></script>
+  <div ng-view>
+
+  </div>
+
+  <!--Dependencies -->
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src='bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='bower_components/ng-file-upload/angular-file-upload.min.js'></script>
 
 
-	  <!--App scripts -->
-	  <!-- Main Module -->
-	  <script src="js/main.module.js"></script>
-	  <!-- Constants -->
-	  <script src="js/main.constants.js"></script>
-	  <!-- Configs -->
-	  <script src="js/configs/auth.config.js"></script>
-	  <script src="js/configs/main.config.js"></script>
-	  <script src="js/configs/portal.config.js"></script>
-	  <script src="js/configs/settings.config.js"></script>
-	  <!-- Directives -->
-	  <!-- <script src='js/directives/newClassForm.js'></script> -->
-	  <!-- Factories -->
-	  <script src="js/factories/id.factory.js"></script>
-	  <script src="js/factories/auth.factory.js"></script>
-	  <!-- Controllers -->
-      <script src="js/controllers/auth.controller.js"></script>
-      <script src="js/controllers/logout.controller.js"></script>
-      <script src="js/controllers/new.controller.js"></script>
-	</body>
+  <!--App scripts -->
+  <!-- Main Module -->
+  <script src="js/main.module.js"></script>
+  <!-- Constants -->
+  <script src="js/main.constants.js"></script>
+  <!-- Configs -->
+  <script src="js/configs/auth.config.js"></script>
+  <script src="js/configs/main.config.js"></script>
+  <script src="js/configs/portal.config.js"></script>
+  <script src="js/configs/settings.config.js"></script>
+  <!-- Directives -->
+  <!-- <script src='js/directives/newClassForm.js'></script> -->
+  <!-- Factories -->
+  <script src="js/factories/id.factory.js"></script>
+  <script src="js/factories/auth.factory.js"></script>
+  <!-- Controllers -->
+  <script src="js/controllers/auth.controller.js"></script>
+  <script src="js/controllers/logout.controller.js"></script>
+  <script src="js/controllers/new.controller.js"></script>
+</body>
+
 </html>

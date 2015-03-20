@@ -11,7 +11,7 @@ function authConfig($routeProvider) {
       controller: 'AuthController',
       controllerAs: 'auth',
       resolve: {
-        data: function ($location, authFactory) {
+        data: function($location, authFactory) {
           if (authFactory.isLoggedIn()) {
             console.log('user is logged in! Redirecting to portal!');
             $location.path('/portal');
@@ -29,17 +29,17 @@ function authConfig($routeProvider) {
       controllerAs: 'auth',
       private: false
     })
-      .when('/forgot', {
+    .when('/forgot', {
       templateUrl: '/js/views/forgot.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: false
     });
-  }
+}
 
 function privateRoutes($rootScope, $location, authFactory) {
   'use strict';
-  $rootScope.$on('$routeChangeStart', function (event, nextRoute) {
+  $rootScope.$on('$routeChangeStart', function(event, nextRoute) {
 
     $rootScope.user = authFactory.getAuth();
 
@@ -52,5 +52,3 @@ function privateRoutes($rootScope, $location, authFactory) {
     }
   });
 }
-
-
