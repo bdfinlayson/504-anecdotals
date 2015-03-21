@@ -2,3 +2,25 @@
 
 <div ng-include="'js/templates/new-test-form.html'">
 </div>
+
+
+<table ng-controller='TestController as tests'>
+  <thead>
+    <tr>
+      <th>Test Name</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Standard Time</th>
+      <th>Common Core</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="test in tests.data">
+      <td>{{test.name}}</td>
+      <td>{{test.date}}</td>
+      <td>{{test.description}}</td>
+      <td>{{test.standardTime}}</td>
+      <td>{{test.commonCore}}</td>
+    </tr>
+  </tbody>
+</table>
