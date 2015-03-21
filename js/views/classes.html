@@ -4,7 +4,7 @@
 <div ng-include="'js/templates/new-class-form.html'">
 </div>
 
-<table class="table">
+<table ng-controller='ClassController as classes'>
   <thead>
     <tr>
       <th>Class Name</th>
@@ -15,9 +15,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="class in classes.data
-      | objToArr">
-      <td>{{class.name</td>
+    <tr ng-repeat="class in classes.data">
+      <td>{{class.name}}</td>
       <td>{{class.subject}}</td>
       <td>{{class.gradeLevel}}</td>
       <td>{{class.teacher}}</td>

@@ -2,11 +2,32 @@ angular
   .module('anecdotals')
   .controller('AuthController', AuthController);
 
-function AuthController($rootScope, $scope, $location, authFactory, BASE_URL) {
+function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_URL) {
   'use strict';
 
   var vm = this;
   console.log('this is the this or vm in the authcontroller: ', vm);
+
+
+
+  var currWindow = window.location;
+  var currUrl = currWindow.href;
+  console.log(currUrl);
+
+  switch (true) {
+    case (currUrl.includes('classes')):
+      console.log('switch is firing');
+        $http
+          .get(BASE_URL + '/classes.json')
+          .success(function(data) {
+            console.log(data);
+            vm.data = data;
+          });
+      break;
+      default:
+      break;
+  }
+
 
   vm.user = {};
 
