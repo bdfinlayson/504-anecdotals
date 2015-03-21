@@ -2,3 +2,25 @@
 
 
 <div ng-include="'js/templates/profile-form.html'"></div>
+
+
+<table ng-controller='ProfileController as profiles'>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>School District</th>
+      <th>Zip Code</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="profile in profiles.data">
+      <td>{{profile.firstName}}</td>
+      <td>{{profile.lastName}}</td>
+      <td>{{profile.schoolDistrict}}</td>
+      <td>{{profile.zipCode}}</td>
+      <td>{{profile.email}}</td>
+    </tr>
+  </tbody>
+</table>
