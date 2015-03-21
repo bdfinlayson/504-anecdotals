@@ -8,7 +8,8 @@ angular
     var vm = this;
 
     classFactory.findAll(function (classes) {
-    vm.data = classes;
+      console.log('from the class controller', classes);
+      vm.data = classes;
   });
 
 
