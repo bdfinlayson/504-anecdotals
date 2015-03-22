@@ -1,4 +1,5 @@
 angular.module('anecdotals', [
-	'ngRoute'
+	'ngRoute',
+	'anecdotals.directives.barChart'
 	// 'anecdotals.directives.newClassForm'
 	]);
