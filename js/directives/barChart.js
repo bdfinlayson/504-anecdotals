@@ -15,7 +15,6 @@ angular
         studentFactory.findAll(function (students) {
           console.log('from the student controller', students);
           $.each(students, function(key,value) {
-              var arr = [];
               console.log(value.times);
               data = value.times;
             });
