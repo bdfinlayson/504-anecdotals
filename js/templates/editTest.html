@@ -1,0 +1,19 @@
+<form name='tests.newTestForm' ng-submit='tests.addOrEditTest()' novalidate>
+  <label>Test Name:</label>
+  <input ng-model='tests.newTest.name' type='text' value="'{{newTest.name}}'" required>
+  <br />
+  <label>Subject:</label>
+  <input ng-model='tests.newTest.subject' type='text' value="'{{newTest.subject}}'" required>
+  <br />
+  <label>Test Date:</label>
+  <input ng-model='tests.newTest.date' type='text' value="'{{newTest.date}}'" required>
+  <br />
+  <label>Test Description:</label>
+  <input ng-model='tests.newTest.description' type='text' value="'{{newTest.description}}'" required>
+  <br />
+  <label>Standard Time Allotted:</label>
+  <input ng-model='tests.newTest.standardTime' type='number' value="'{{newTest.standardTime}}'" required>
+  <br />
+  <input type="submit" value="Save">
+  <button ng-click='tests.deleteTest()' preventDefault>Delete Test</button>
+</form>
