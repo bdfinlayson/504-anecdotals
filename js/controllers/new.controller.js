@@ -74,10 +74,11 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
           break;
         case (currUrl.includes('tests')):
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
-          var testId = fb.child('tests').push({
-            'name': thing.testName,
-            'date': thing.testDate,
-            'description': thing.type,
+          var testId = fb.child('teachers').child(user.uid).child('tests').push({
+            'name': thing.name,
+            'date': thing.date,
+            'subject': thing.subject,
+            'description': thing.description,
             'standardTime': thing.standardTime,
             'teacherEmail': user.password.email,
             'teacherUid': user.uid,
@@ -87,11 +88,11 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
 
 
           fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'testId': testId } );
-          $('tbody').append('<tr><td>' + thing.firstName + '</td><td>' + thing.lastName + '</td><td>' + thing.additionalInfo + '</td><td><a href="/#/students/edit/' + studentId + '">' + "Edit" + '</a></td></tr>');
+          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></td></tr>');
           clear();
 
-
-          fb.child('teachers').child(user.uid).child('tests').push(testId);
+          var deleteId = fb.child('teachers').child(user.uid).child('testIds').push(testId).key();
+          fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'deleteId': deleteId } );
           break;
         default:
           break;

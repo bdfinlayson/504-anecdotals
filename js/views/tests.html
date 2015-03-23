@@ -8,19 +8,22 @@
   <thead>
     <tr>
       <th>Test Name</th>
+      <th>Subject</th>
       <th>Date</th>
       <th>Description</th>
       <th>Standard Time</th>
-      <th>Common Core</th>      
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="test in tests.data">
       <td>{{test.name}}</td>
+      <td>{{test.subject}}</td>
       <td>{{test.date}}</td>
       <td>{{test.description}}</td>
       <td>{{test.standardTime}}</td>
-      <td>{{test.commonCore}}</td>
+      <td>
+        <a href='/#/tests/edit/{{test.testId}}'>Edit</a>
+      </td>
     </tr>
   </tbody>
 </table>
