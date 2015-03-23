@@ -78,12 +78,16 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
             'name': thing.testName,
             'date': thing.testDate,
             'description': thing.type,
-            'commonCore': thing.commonCore,
             'standardTime': thing.standardTime,
             'teacherEmail': user.password.email,
             'teacherUid': user.uid,
+            'testId': 'undefined',
+            'deleteId': 'undefined'
           }).key();
 
+
+          fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'testId': testId } );
+          $('tbody').append('<tr><td>' + thing.firstName + '</td><td>' + thing.lastName + '</td><td>' + thing.additionalInfo + '</td><td><a href="/#/students/edit/' + studentId + '">' + "Edit" + '</a></td></tr>');
           clear();
 
 
