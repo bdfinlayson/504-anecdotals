@@ -10,7 +10,7 @@ angular
     classFactory.findAll(function (classes) {
       console.log('from the class controller', classes);
       vm.data = classes;
-  });
 
+  });
 
   }

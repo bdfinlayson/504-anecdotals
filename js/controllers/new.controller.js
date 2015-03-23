@@ -46,6 +46,8 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
             teacher: user.uid
           }).key();
 
+          clear();
+
           fb.child('teachers').child(user.uid).child('classes').push(classId);
           break;
         case (currUrl.includes('students')):
@@ -58,6 +60,8 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
             'teacherEmail': user.password.email,
             'teacherUid': user.uid
           }).key();
+
+          clear();
 
           fb.child('teachers').child(user.uid).child('students').push(studentId);
           break;
@@ -73,6 +77,8 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
             'teacherUid': user.uid,
           }).key();
 
+          clear();
+
           fb.child('teachers').child(user.uid).child('tests').push(testId);
           break;
         default:
@@ -80,4 +86,14 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
       }
     }
   }
+
+  function clear() {
+    $('input[type="text"]').val('');
+    $('input[type="email"]').val('');
+    $('input[type="password"]').val('');
+    $('input[type="date"]').val('');
+    $('input[type="number"]').val('');
+    $('input[type="phone"]').val('');
+  }
+
 }

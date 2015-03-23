@@ -20,6 +20,7 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
       } else {
         console.log('Logged in successfully', authData);
         $rootScope.user = authData;
+        clear();
         $location.path('/portal');
         $scope.$apply();
       }
@@ -62,6 +63,7 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
         });
         console.log('these are the teacher and profile keys: ', profileId, vm.user.uid);
         vm.login();
+        clear();
       }
     });
   };
@@ -72,7 +74,17 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
         console.log('Error resetting password:', err);
       } else {
         console.log('Password reset email sent successfully');
+        clear();
       }
     });
   };
+  
+  function clear() {
+    $('input[type="text"]').val('');
+    $('input[type="email"]').val('');
+    $('input[type="password"]').val('');
+    $('input[type="date"]').val('');
+    $('input[type="number"]').val('');
+    $('input[type="phone"]').val('');
+  }
 }
