@@ -8,8 +8,8 @@ angular
     var vm = this;
 
 
-    studentFactory.findAll(function (students) {
 
+    studentFactory.findAll(function (students) {
       console.log('from the student controller', students);
       vm.data = students;
   });

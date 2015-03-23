@@ -41,7 +41,14 @@ angular
         .delete(url)
         .success(function () {
           console.log('student deleted');
+          $http
+            .delete(url)
+            .success(function () {
+              console.log('student deleted');
+            });
         });
+
+
 
 
     };
