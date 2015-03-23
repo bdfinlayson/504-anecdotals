@@ -2,7 +2,7 @@ angular
   .module('anecdotals')
   .controller('NewController', NewController);
 
-function NewController($rootScope, $scope, $location, BASE_URL) {
+function NewController($http, $rootScope, $scope, $location, BASE_URL) {
   'use strict';
   console.log('newcontroller fired');
 
@@ -12,6 +12,8 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
 
   vm.thing = {};
   console.log(vm.thing);
+
+
 
   vm.submit = function() {
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
@@ -52,17 +54,23 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
         case (currUrl.includes('students')):
           //generate child url and send class id to fb
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
-          var studentId = fb.child('students').push({
+          var studentId = fb.child('teachers').child(user.uid).child('students').push({
             'firstName': thing.firstName,
             'lastName': thing.lastName,
             'additionalInfo': thing.additionalInfo,
             'teacherEmail': user.password.email,
-            'teacherUid': user.uid
+            'teacherUid': user.uid,
+            'studentId': 'undefined',
+            'deleteId': 'undefined'
           }).key();
 
+          fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'studentId': studentId } );
+          $('tbody').append('<tr><td>' + thing.firstName + '</td><td>' + thing.lastName + '</td><td>' + thing.additionalInfo + '</td><td><a href="/#/students/edit/' + studentId + '">' + "Edit" + '</a></td></tr>');
           clear();
 
-          fb.child('teachers').child(user.uid).child('students').push(studentId);
+          var deleteId = fb.child('teachers').child(user.uid).child('studentIds').push(studentId).key();
+          fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'deleteId': deleteId } );
+
           break;
         case (currUrl.includes('tests')):
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
@@ -77,6 +85,7 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
           }).key();
 
           clear();
+
 
           fb.child('teachers').child(user.uid).child('tests').push(testId);
           break;

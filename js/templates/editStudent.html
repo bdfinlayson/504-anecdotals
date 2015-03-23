@@ -1,0 +1,13 @@
+<form name="students.newStudentForm" ng-submit="students.addOrEditStudent()" novalidate>
+    <label>First:</label>
+    <input ng-model="students.newStudent.firstName" placeholder="" value="'{{newStudent.firstName}}'" required>
+    <br />
+    <label>Last:</label>
+    <input ng-model="students.newStudent.lastName" value='{{newStudent.lastName}}' required>
+    <br/>
+    <label>Additional Information:</label>
+    <input ng-model="students.newStudent.additionalInfo" value='{{newStudent.additionalInfo}}' required>
+    <br/>
+  <input type="submit" value="Save">
+  <button ng-click='students.deleteStudent()' preventDefault>Delete Student</button>
+</form>

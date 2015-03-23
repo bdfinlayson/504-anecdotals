@@ -4,28 +4,63 @@ angular
 
 function studentFactory($http, BASE_URL) {
   'use strict';
-  var students = [];
+  return {
 
-  students.findAll = function(cb) {
+    update: function (id, data, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
 
-    var fb = new Firebase('https://504-anecdotals.firebaseio.com');
-    var user = fb.getAuth();
-    $.getJSON('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students.json', function(data) {
-      if (data) {
-        $.each(data, function(key, value) {
-          $http
-            .get('https://504-anecdotals.firebaseio.com/students/' + value + '.json')
-            .success(function(data) {
-              students.push(data);
-              cb(students);
-            });
+      var url = BASE_URL + '/teachers/' + user.uid + '/students/' + id + '.json';
 
+      $http
+        .put(url, data)
+        .success(function (res) {
+          if (typeof cb === 'function') {
+            cb(res);
+          }
         });
-      }
+    },
 
-    });
+    findOne: function (id, cb) {
+      console.log(id)
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+      console.log(user);
+
+      $http
+        .get(BASE_URL + '/teachers/' + user.uid + '/students/' + id + '.json')
+        .success(function (data) {
+          cb(data);
+          console.log(data);
+        });
+    },
+
+    findAll: function(cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      $http
+      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/studentIds.json')
+      .success(function(students) {
+        var array = [];
+
+        if (students) {
+          $.each(students, function(key, value) {
+            $http
+              .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + value + '.json')
+              .success(function(data) {
+                array.push(data);
+                cb(array);
+              });
+
+          });
+        }
+
+      });
+
+    }
+
+
 
   };
-  console.log(students);
-  return students;
 }
