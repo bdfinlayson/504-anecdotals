@@ -1,6 +1,7 @@
 <h2>Classes</h2>
 
 
+
 <div ng-include="'js/templates/new-class-form.html'">
 </div>
 
@@ -13,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="class in classes.data">
+    <tr class='rowsOfData' ng-repeat="class in classes.data">
       <td>{{class.name}}</td>
       <td>{{class.subject}}</td>
       <td>{{class.gradeLevel}}</td>

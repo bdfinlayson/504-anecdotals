@@ -47,7 +47,6 @@ function NewController($rootScope, $scope, $location, BASE_URL) {
           }).key();
 
           clear();
-
           fb.child('teachers').child(user.uid).child('classes').push(classId);
           break;
         case (currUrl.includes('students')):

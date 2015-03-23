@@ -63,11 +63,17 @@ angular
         //   });
 
         d3.json("https://504-anecdotals.firebaseio.com/tests/-Jl17Ycl4AiriSPYFnZU/studentTimes.json", function(error, data) {
-          var sdata = [{'bob': 2}, {'joe': 5}, {'max':8}];
-          x.domain(sdata.map(function(d) {
+          var testTimes = [];
+          console.log(data)
+          for (var i = 0; i < data.count(); i++) {
+            testTimes.push({ 'data.key()[i]': data.val()[i] });
+            console.log(testTimes);
+          }
+          console.log(error, data);
+          x.domain(data.map(function(d) {
             return d.key;
           }));
-          y.domain([0, d3.max(sdata, function(d) {
+          y.domain([0, d3.max(data, function(d) {
             return d.value;
           })]);
 
@@ -87,11 +93,11 @@ angular
               .text("Frequency");
 
           svg.selectAll(".bar")
-              .data(sdata)
+              .data(data)
             .enter().append("rect")
               .attr("class", "bar")
               .attr("x", function(d) { return x(d.letter); })
-              .attr("width", x
+              .attr("width", x.rangeBand())
               .attr("y", function(d) { return y(d.frequency); })
               .attr("height", function(d) { return height - y(d.frequency); });
 
