@@ -2,7 +2,7 @@ angular
   .module('anecdotals')
   .controller('EditController',EditController);
 
-  function EditController($routeParams, $http, $location, studentFactory, BASE_URL) {
+  function EditController($routeParams, $http, $location, studentFactory, testFactory, BASE_URL) {
     'use strict';
 
     var vm = this;
@@ -57,6 +57,12 @@ angular
   studentFactory.update(pathId, vm.newStudent, function () {
     $location.path('/students/');
   });
+};
+
+vm.sendTestResults = function () {
+testFactory.update(pathId, vm.newStudent, function () {
+  $location.path('/students/');
+});
 };
 
 

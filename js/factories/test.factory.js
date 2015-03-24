@@ -6,6 +6,14 @@ function testFactory($http, BASE_URL) {
   'use strict';
   return {
 
+    updateStudentTime: function(id, data, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      var url = BASE_URL + '/teachers/' + user.uid + '/tests/' + id + '/studentTimes.json';
+
+    },
+
     update: function (id, data, cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
@@ -22,7 +30,7 @@ function testFactory($http, BASE_URL) {
     },
 
     findOne: function (id, cb) {
-      console.log(id)
+      console.log(id);
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
       console.log(user);

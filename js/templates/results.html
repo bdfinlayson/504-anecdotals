@@ -1,0 +1,14 @@
+<h2>Test: {{results.results.name}}</h2>
+<h3>Standard Time Allotted: {{results.results.standardTime}}</h3>
+
+
+
+<div ng-controller='StudentController as students'>
+  <div ng-repeat="student in students.data">
+    <form name="students.newStudentForm" ng-submit="students.sendTestResults()" novalidate>
+      <h4>{{student.firstName}} {{student.lastName}}</h4>
+      Time Taken: <input ng-model="students.newStudent.timeTaken" placeholder="time taken" required>
+      <input type="submit" value="Save">
+    </form>
+  </div>
+</div>

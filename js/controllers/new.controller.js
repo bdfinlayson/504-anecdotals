@@ -61,7 +61,8 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
             'teacherEmail': user.password.email,
             'teacherUid': user.uid,
             'studentId': 'undefined',
-            'deleteId': 'undefined'
+            'deleteId': 'undefined',
+            'testTimes': 'undefined'
           }).key();
 
           fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'studentId': studentId } );
@@ -83,12 +84,13 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
             'teacherEmail': user.password.email,
             'teacherUid': user.uid,
             'testId': 'undefined',
-            'deleteId': 'undefined'
+            'deleteId': 'undefined',
+            'studentTimes': 'undefined'
           }).key();
 
 
           fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'testId': testId } );
-          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></td></tr>');
+          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></td><td><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></td></tr>');
           clear();
 
           var deleteId = fb.child('teachers').child(user.uid).child('testIds').push(testId).key();
