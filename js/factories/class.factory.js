@@ -58,6 +58,29 @@ function classFactory($http, BASE_URL) {
           }
 
         });
+    },
+    findAllStudents: function(id, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      $http
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/students.json')
+        .success(function(students) {
+          var array = [];
+
+          if (students) {
+            $.each(students, function(key, value) {
+              $http
+                .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + value + '.json')
+                .success(function(data) {
+                  array.push(data);
+                  cb(array);
+                });
+
+            });
+          }
+
+        });
     }
   };
 }

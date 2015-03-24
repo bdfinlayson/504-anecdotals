@@ -8,12 +8,21 @@ angular
     var vm = this;
     var path = $location.$$path;
     var pathId = path.slice(14);
+    // var pathId2 = path.slice(14);
     var classInfo;
+    var classStudentInfo;
+
 
     classFactory.findOne(pathId, function (clss) {
       vm.newClass = clss;
       classInfo = clss;
       console.log(clss, vm.newClass);
+    });
+
+    classFactory.findAllStudents(pathId, function(students) {
+      vm.data = students;
+      classStudentInfo = students;
+      console.log(students, vm.students);
     });
 
     vm.deleteClass = function (cb) {
@@ -48,9 +57,6 @@ angular
             });
         });
 
-
-
-
     };
 
   vm.addOrEditClass = function () {
@@ -58,6 +64,39 @@ angular
     $location.path('/classes/');
   });
 };
+
+  vm.removeStudentFromClass = function () {
+    var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+    var user = fb.getAuth();
+    console.log(user);
+    var data;
+    $http
+      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '.json')
+      .success(function(cb) {
+        data = cb;
+        console.log(data);
+      });
+
+    var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
+    var teacherUrl = BASE_URL + '/teachers/' + user.uid + '/classIds/' + classInfo.deleteId + '.json';
+
+    $http
+      .delete(teacherUrl)
+      .success(function () {
+        console.log('class in teacher deleted');
+      });
+
+    $http
+      .delete(url)
+      .success(function () {
+        console.log('class deleted');
+        $http
+          .delete(url)
+          .success(function () {
+            console.log('class deleted');
+          });
+      });
+    };
 
 // vm.sendTestResults = function () {
 // testFactory.update(pathId, vm.newStudent, function () {

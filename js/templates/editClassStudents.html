@@ -1,0 +1,40 @@
+<h2>Students in your {{classes.newClass.name}} class</h2>
+<table ng-controller='EditClassController as students'>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody class='studentsInClass'>
+    <tr ng-repeat="student in students.data" id="{{student.studentId}}">
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>
+        <button ng-click='students.removeStudentFromClass(student.studentId)'>Remove From Class</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h2>All Students</h2>
+<table ng-controller='StudentController as students'>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody class='studentsNotInClass'>
+    <tr ng-repeat="student in students.data" id="{{student.studentId}}">
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>
+        <button ng-click='students.addStudentToClass(student.studentId)'>Add To Class</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -51,7 +51,7 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
           }).key();
 
           fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'classId': classId } );
-          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.gradeLevel + '</td><td>' + "undefined" + '</td><td><a href="/#/classes/edit/' + classId + '">' + "Edit" + '</a></td></tr>');
+          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.gradeLevel + '</td><td>' + "undefined" + '</td><td><a href="/#/classes/edit/' + classId + '">' + "Edit Class" + '</a></td><td><a href="/#/classes/clSt/' + classId + '">' + "Add/Remove Students" + '</a></td><td><a href="/#/classes/edit-class-tests/' + classId + '">' + "Edit Tests" + '</a></td></tr>');
           clear();
 
 
