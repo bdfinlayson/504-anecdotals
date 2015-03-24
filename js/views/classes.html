@@ -9,15 +9,18 @@
   <thead>
     <tr>
       <th>Class Name</th>
-      <th>Subject</th>
       <th>Grade Level</th>
+      <th>Tests</th>
     </tr>
   </thead>
   <tbody>
     <tr class='rowsOfData' ng-repeat="class in classes.data">
       <td>{{class.name}}</td>
-      <td>{{class.subject}}</td>
       <td>{{class.gradeLevel}}</td>
+      <td>{{class.tests}}</td>
+      <td>
+        <a href='/#/tests/edit/{{class.classId}}'>Edit</a>
+      </td>
     </tr>
   </tbody>
 </table>

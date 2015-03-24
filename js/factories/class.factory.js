@@ -4,28 +4,31 @@ angular
 
 function classFactory($http, BASE_URL) {
   'use strict';
-  var classes = [];
 
-  classes.findAll = function(cb) {
+  return {
 
-    var fb = new Firebase('https://504-anecdotals.firebaseio.com');
-    var user = fb.getAuth();
-    $.getJSON('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes.json', function(data) {
-      if (data) {
-        $.each(data, function(key, value) {
-          $http
-            .get('https://504-anecdotals.firebaseio.com/classes/' + value + '.json')
-            .success(function(data) {
-              classes.push(data);
-              cb(classes);
+    findAll: function(cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      $http
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classIds.json')
+        .success(function(classes) {
+          var array = [];
+
+          if (classes) {
+            $.each(classes, function(key, value) {
+              $http
+                .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + value + '.json')
+                .success(function(data) {
+                  array.push(data);
+                  cb(array);
+                });
+
             });
+          }
 
         });
-      }
-
-    });
-
+    }
   };
-  console.log(classes);
-  return classes;
 }
