@@ -40,16 +40,24 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
         case (currUrl.includes('classes')):
           //generate child url and send class data to fb
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
-          var classId = fb.child('classes').push({
+          var classId = fb.child('teachers').child(user.uid).child('classes').push({
             name: thing.name,
-            subject: thing.type,
             gradeLevel: thing.gradeLevel,
             teacherEmail: user.password.email,
-            teacher: user.uid
+            teacher: user.uid,
+            classId: 'undefined',
+            deleteId: 'undefined',
+            tests: 'undefined'
           }).key();
 
+          fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'classId': classId } );
+          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.gradeLevel + '</td><td><a href="/#/classes/edit/' + classId + '">' + "Edit" + '</a></td></tr>');
           clear();
-          fb.child('teachers').child(user.uid).child('classes').push(classId);
+
+
+          var deleteId = fb.child('teachers').child(user.uid).child('classIds').push(classId).key();
+          fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'deleteId': deleteId } );
+
           break;
         case (currUrl.includes('students')):
           //generate child url and send class id to fb
