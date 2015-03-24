@@ -20,6 +20,7 @@ angular
     var path = $location.$$path;
     var pathId = path.slice(14);
     var testInfo;
+    console.log(vm.newStudent);
 
   testFactory.updateStudentTime(pathId, vm.newStudent, function () {
     // $location.path('/students/');
