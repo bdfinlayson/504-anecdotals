@@ -25,6 +25,11 @@ angular
       console.log(students, vm.students);
     });
 
+    testFactory.findAllTests(pathId, function (tests) {
+      console.log('from the test controller', tests);
+      vm.data = tests;
+  });
+
     vm.deleteClass = function (cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();

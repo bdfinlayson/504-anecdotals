@@ -1,0 +1,49 @@
+<h2>Tests in your {{classes.newClass.name}} class</h2>
+<table ng-controller='EditClassController as tests'>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody class='testsInClass'>
+    <tr ng-repeat="test in tests.data" id="{{test.testId}}">
+      <td>{{test.name}}</td>
+      <td>{{test.description}}</td>
+      <td>
+        <button ng-click='tests.removeTestFromClass(test.testId)'>Remove From Class</a>
+      </td>
+      <td>
+        <a href='/#/tests/results/{{test.testId}}'>Results</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<h2>All Tests</h2>
+<table ng-controller='TestController as tests'>
+  <thead>
+    <tr>
+      <th>Test Name</th>
+      <th>Subject</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Standard Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="test in tests.data">
+      <td>{{test.name}}</td>
+      <td>{{test.subject}}</td>
+      <td>{{test.date}}</td>
+      <td>{{test.description}}</td>
+      <td>{{test.standardTime}}</td>
+      <td>
+        <button ng-click='tests.addTestToClass(test.testId)'>Add To Class</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

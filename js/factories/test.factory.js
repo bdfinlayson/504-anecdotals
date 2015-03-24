@@ -66,6 +66,31 @@ function testFactory($http, BASE_URL) {
 
       });
 
+    },
+
+    findAllTests: function(id, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      $http
+      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + id + '/classes.json')
+      .success(function(tests) {
+        var array = [];
+
+        if (tests) {
+          $.each(tests, function(key, value) {
+            $http
+              .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + value + '.json')
+              .success(function(data) {
+                array.push(data);
+                cb(array);
+              });
+
+          });
+        }
+
+      });
+
     }
 
 
