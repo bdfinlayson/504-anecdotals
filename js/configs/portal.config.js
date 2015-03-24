@@ -41,6 +41,12 @@ function PortalConfig($routeProvider) {
       controllerAs: 'tests',
       private: true
     })
+    .when('/classes/edit/:uuid', {
+      templateUrl: 'js/templates/editClass.html',
+      controller: 'EditClassController',
+      controllerAs: 'classes',
+      private: true
+    })
     .when('/tests/results/:uuid', {
       templateUrl: 'js/templates/results.html',
       controller: 'ResultsController',
