@@ -7,6 +7,35 @@ function classFactory($http, BASE_URL) {
 
   return {
 
+    update: function (id, data, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+
+      var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + id + '.json';
+
+      $http
+        .put(url, data)
+        .success(function (res) {
+          if (typeof cb === 'function') {
+            cb(res);
+          }
+        });
+    },
+
+    findOne: function (id, cb) {
+      console.log(id)
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+      console.log(user);
+
+      $http
+        .get(BASE_URL + '/teachers/' + user.uid + '/classes/' + id + '.json')
+        .success(function (data) {
+          cb(data);
+          console.log(data);
+        });
+    },
+
     findAll: function(cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
