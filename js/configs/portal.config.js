@@ -65,6 +65,24 @@ function PortalConfig($routeProvider) {
       controllerAs: 'results',
       private: true
     })
+    .when('/classes/info/:uuid', {
+      templateUrl: 'js/templates/infoClass.html',
+      controller: 'InfoController',
+      controllerAs: 'info',
+      private: true
+    })
+    .when('/students/info/:uuid', {
+      templateUrl: 'js/templates/infoStudent.html',
+      controller: 'InfoController',
+      controllerAs: 'info',
+      private: true
+    })
+    .when('/tests/info/:uuid', {
+      templateUrl: 'js/templates/infoTest.html',
+      controller: 'InfoController',
+      controllerAs: 'info',
+      private: true
+    })
     .when('/tests', {
       templateUrl: '/js/views/tests.html',
       controller: 'NewController',
