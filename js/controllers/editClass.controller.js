@@ -25,7 +25,7 @@ angular
       console.log(students, vm.students);
     });
 
-    testFactory.findAllTests(pathId, function (tests) {
+    testFactory.findAllTestsInClass(pathId, function (tests) {
       console.log('from the test controller', tests);
       vm.data = tests;
   });

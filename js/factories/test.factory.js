@@ -129,6 +129,21 @@ function testFactory($http, BASE_URL) {
 
       });
 
+    },
+    findAllTestsInClass: function(id, cb) {
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+      console.log('findAllTestsInClass function fired!');
+      console.log(id);
+
+      $http
+      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/testInfo.json')
+      .success(function(tests) {
+        cb(tests);
+        console.log(tests);
+
+      });
+
     }
 
 

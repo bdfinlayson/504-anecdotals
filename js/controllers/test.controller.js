@@ -37,6 +37,19 @@ angular
     //push test id to class
     var deleteStudentInClassLocationId = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
 
+    //push test info to class
+
+    fb.child('teachers').child(user.uid).child('classes').child(classId).child('testInfo').child(testId).update({
+      'name': data.name,
+      'subject': data.subject,
+      'date': data.date,
+      'description': data.description,
+      'standardTime': data.standardTime,
+      'testId': data.testId
+    });
+
+
+
     //update delete class location to student
     // fb.child('teachers').child(user.uid).child('students').child(studentInfo.studentId).child('deleteClassId').update({'deleteClassId': deleteClassInStudentLocationId});
     //push delete student location to class

@@ -1,13 +1,13 @@
-<h2>Tests in your {{classes.newClass.name}} class</h2>
+<h2>Tests in your {{tests.newClass.name}} class</h2>
 <table ng-controller='EditClassController as tests'>
   <thead>
     <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
+      <th>Name</th>
+      <th>Description</th>
     </tr>
   </thead>
   <tbody class='testsInClass'>
-    <tr ng-repeat="test in tests.data" id="{{test.testId}}">
+    <tr ng-repeat="test in tests.newClass.testInfo" id="{{test.testId}}">
       <td>{{test.name}}</td>
       <td>{{test.description}}</td>
       <td>
