@@ -24,6 +24,16 @@ switch(true) {
     });
 
     break;
+    case (currUrl.includes('students')):
+      console.log('info switch fired at: ', currUrl);
+      var vm = this;
+
+      infoFactory.findOneStudent(function (oneStudent) {
+        console.log('Class info from the info factory', oneStudent);
+        vm.data = oneStudent;
+      });
+
+      break;
     default:
     break;
   }
