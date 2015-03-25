@@ -14,16 +14,18 @@ angular
       vm.data = students;
   });
 
-  vm.sendTestResults = function (data, id) {
+  vm.sendTestResults = function (student) {
 
     var vm = this;
+    console.log(vm);
     var path = $location.$$path;
     var pathId = path.slice(14);
     var testInfo;
-    console.log(data, id);
+    console.log(student);
+    $('input[type="number"]').val('');
 
-  testFactory.updateStudentTime(pathId, data, id, function () {
-    // $location.path('/students/');
+
+  testFactory.updateStudentTime(pathId, student, function () {
   });
   };
 
@@ -68,4 +70,5 @@ angular
 
 
   };
+
   }

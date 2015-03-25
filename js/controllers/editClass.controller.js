@@ -83,7 +83,7 @@ angular
       });
 
     var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
-    var teacherUrl = BASE_URL + '/teachers/' + user.uid + '/classIds/' + classInfo.deleteId + '.json';
+    var studentUrl = BASE_URL + '/teachers/' + user.uid + '/students/' + classInfo.deleteId + '.json';
 
     $http
       .delete(teacherUrl)

@@ -32,7 +32,7 @@ angular
 
 
     //push class id to test
-    var deleteClassInTestLocationId = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push(classId).key();
+    fb.child('teachers').child(user.uid).child('tests').child(testId).update({ 'classId': classId });
 
     //push test id to class
     var deleteStudentInClassLocationId = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();

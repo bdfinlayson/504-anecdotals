@@ -6,11 +6,49 @@ function testFactory($http, BASE_URL) {
   'use strict';
   return {
 
-    updateStudentTime: function(id, data, cb) {
+    updateStudentTime: function(pathId, student, cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
 
-      var url = BASE_URL + '/teachers/' + user.uid + '/tests/' + id + '/studentTimes.json';
+
+
+      $.getJSON(BASE_URL + '/teachers/' + user.uid + '/tests/' + pathId + '.json', function (data) {
+        console.log(data);
+        var percentageOver = ((student.timeTaken / data.standardTime) * 100) - 100;
+        console.log(percentageOver);
+
+
+//update the test object with student time data
+      fb.child('teachers').child(user.uid).child('tests').child(pathId).child('studentTimes').push({
+        'firstName': student.firstName,
+        'lastName': student.lastName,
+        'timeTaken': student.timeTaken,
+        'studentId': student.studentId,
+        'percentageOver': percentageOver,
+        'standardTime': data.standardTime
+
+      });
+//update the class object with student time data
+      fb.child('teachers').child(user.uid).child('classes').child(data.classId).child('testTimes').push({
+        'firstName': student.firstName,
+        'lastName': student.lastName,
+        'timeTaken': student.timeTaken,
+        'studentId': student.studentId,
+        'percentageOver': percentageOver,
+        'standardTime': data.standardTime,
+        'testName': data.name,
+        'testId': data.testId
+      });
+//update the student object with the student time data
+      fb.child('teachers').child(user.uid).child('students').child(student.studentId).child('testTimes').push({
+        'timeTaken': student.timeTaken,
+        'percentageOver': percentageOver,
+        'standardTime': data.standardTime,
+        'testName': data.name,
+        'testId': data.testId
+      });
+
+    });
 
     },
 
