@@ -5,10 +5,10 @@
 
 <div ng-controller='StudentController as students'>
   <div ng-repeat="student in students.data">
-    <form name="students.newStudentForm" ng-submit="students.sendTestResults()" novalidate>
+    <form name="students.newStudentForm" role="form" novalidate>
       <h4>{{student.firstName}} {{student.lastName}}</h4>
-      Time Taken: <input ng-model="students.newStudent.timeTaken" placeholder="time taken" required>
-      <input type="submit" value="Save">
+      Time Taken: <input ng-model="student.timeTaken" placeholder="time taken" required>
+      <input type="submit" ng-click="students.sendTestResults(student.timeTaken, student.studentId)">
     </form>
   </div>
 </div>

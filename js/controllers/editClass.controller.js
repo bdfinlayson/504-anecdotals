@@ -64,13 +64,13 @@ angular
 
     };
 
-  vm.addOrEditClass = function () {
+  vm.addOrEditClass = function (studentId) {
   classFactory.update(pathId, vm.newClass, function () {
     $location.path('/classes/');
   });
 };
 
-  vm.removeStudentFromClass = function () {
+  vm.removeStudentFromClass = function (studentId) {
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
     var user = fb.getAuth();
     console.log(user);
