@@ -1,0 +1,22 @@
+<h1>{{info.data.name}} Test Student Performance Report</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Std Time</th>
+      <th>Time Taken</th>
+      <th>% Over</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class='rowsOfData' ng-repeat="info in info.data.studentTimes">
+      <td>{{info.firstName}}</td>
+      <td>{{info.lastName}}</td>
+      <td>{{info.standardTime}}</td>
+      <td>{{info.timeTaken}}</td>
+      <td>{{info.percentageOver}}</td>
+    </tr>
+  </tbody>
+</table>

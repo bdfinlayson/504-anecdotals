@@ -41,6 +41,22 @@ function infoFactory($http, BASE_URL, $location) {
           cb(data);
           console.log(data);
         });
-    }
+    },
+    findOneTest: function(cb) {
+      console.log('infoFactory function findOneTest fired!');
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+      console.log(user);
+      var path = $location.$$path;
+      var pathId = path.slice(12);
+      console.log(pathId);
+
+      $http
+        .get(BASE_URL + '/teachers/' + user.uid + '/tests/' + pathId + '.json')
+        .success(function(data) {
+          cb(data);
+          console.log(data);
+        });
+    },
   };
 }

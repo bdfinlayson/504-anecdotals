@@ -98,7 +98,7 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
 
 
           fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'testId': testId } );
-          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></td><td><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></td></tr>');
+          $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></td><td><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></td><td><a href="/#/tests/info/' + testId + '">' + "Test Info" + '</a></td></tr>');
           clear();
 
           var deleteId = fb.child('teachers').child(user.uid).child('testIds').push(testId).key();

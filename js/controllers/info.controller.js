@@ -29,11 +29,20 @@ switch(true) {
       var vm = this;
 
       infoFactory.findOneStudent(function (oneStudent) {
-        console.log('Class info from the info factory', oneStudent);
+        console.log('Student info from the info factory', oneStudent);
         vm.data = oneStudent;
       });
 
       break;
+      case (currUrl.includes('tests')):
+        console.log('info switch fired at: ', currUrl);
+        var vm = this;
+
+        infoFactory.findOneTest(function (oneTest) {
+          console.log('Test info from the info factory', oneTest);
+          vm.data = oneTest;
+        });
+        break;
     default:
     break;
   }
