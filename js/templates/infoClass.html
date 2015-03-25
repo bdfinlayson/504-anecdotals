@@ -1,4 +1,4 @@
-<h1>Student Performance in class {{info.class.name}} of grade {{info.class.gradeLevel}}</h1>
+<h1>Student Performance in class {{info.data.name}} of grade {{info.data.gradeLevel}}</h1>
 
 <table>
   <thead>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr class='rowsOfData' ng-repeat="info in info.data">
+    <tr class='rowsOfData' ng-repeat="info in info.data.testTimes">
       <td>{{info.firstName}}</td>
       <td>{{info.lastName}}</td>
       <td>{{info.testName}}</td>
