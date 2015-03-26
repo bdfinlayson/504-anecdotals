@@ -7,7 +7,11 @@
 <div ng-include="'js/templates/new-class-form.html'">
 </div>
 
-<table ng-controller='ClassController as classes'>
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newClass">
+  Create New Class
+</button>
+
+<table ng-controller='ClassController as classes' class="table table-striped">
   <thead>
     <tr>
       <th>Class Name</th>
@@ -19,16 +23,17 @@
       <td>{{class.name}}</td>
       <td>{{class.gradeLevel}}</td>
       <td>
-        <a href='/#/classes/edit/{{class.classId}}'>Edit Class</a>
-      </td>
-      <td>
-        <a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a>
-      </td>
-      <td>
-        <a href='/#/classes/clTr/{{class.classId}}'>Edit Tests</a>
-      </td>
-      <td>
-        <a href='/#/classes/info/{{class.classId}}'>Class Info</a>
+        <div class="dropdown">
+          <a id="dLabel" data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+            Options
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href='/#/classes/edit/{{class.classId}}'>Edit Class</a></li>
+            <li><a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
+            <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a><li>
+          </ul>
+        </div>
       </td>
     </tr>
   </tbody>
