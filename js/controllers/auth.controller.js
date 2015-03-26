@@ -46,9 +46,7 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
           'email': vm.user.email,
           'password': vm.user.password,
           'firstName': vm.user.firstName,
-          'lastName': vm.user.lastName,
-          'schoolDistrict': vm.user.schoolDistrict,
-          'zipCode': vm.user.zipCode
+          'lastName': vm.user.lastName
         }).key();
 
         fb.child('teachers').child(authData.uid).set({
@@ -57,9 +55,7 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
           'password': vm.user.password,
           'profile': profileId,
           'firstName': vm.user.firstName,
-          'lastName': vm.user.lastName,
-          'schoolDistrict': vm.user.schoolDistrict,
-          'zipCode': vm.user.zipCode
+          'lastName': vm.user.lastName
         });
         console.log('these are the teacher and profile keys: ', profileId, vm.user.uid);
         vm.login();
@@ -78,7 +74,7 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
       }
     });
   };
-  
+
   function clear() {
     $('input[type="text"]').val('');
     $('input[type="email"]').val('');

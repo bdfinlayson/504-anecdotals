@@ -1,34 +1,49 @@
 <login-nav></login-nav>
 
 
-<form name='registerForm' ng-submit='auth.register()' novalidate>
-  <h2>Sign Up</h2>
-  <div>
-    <input ng-model='auth.user.firstName' type='text' placeholder='First Name' required>
+
+
+
+<form class="form-horizontal" name='registerForm' ng-submit='auth.register()' novalidate>
+  <div class="form-group">
+    <label for="firstName" class="col-sm-3 control-label">First Name</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.firstName' type="text" class="form-control" id="firstName" placeholder="First Name" required>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.lastName' type='text' placeholder='Last Name' required>
+  <div class="form-group">
+    <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.lastName' type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.schoolDistrict' type='text' placeholder='School district' required>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.email' type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.zipCode' type='text' placeholder='Zip code' required>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.password' type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.email' type='email' placeholder='Email address' required>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.password' type='password' placeholder='Password' required>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-success">Create Account</button>
+      <p>Already have an account? <a href='#/login'>Log In</a></p>
+      <a href='#/terms'>Terms of Service</a>
+      <a href='#/privacy'>Privacy Policy</a>
+    </div>
   </div>
-  <div>
-    <input type='password' placeholder='Retype password' required>
-  </div>
-  <div>
-    Remember me: <input type='checkbox' value='Remember Me'>
-    <input ng-click="auth.register()" type='submit' value='Create Account'>
-  </div>
-  <p>Already have an account? <a href='#/login'>Log In</a></p>
 </form>
-<a href='#/terms'>Terms of Service</a>
-<a href='#/privacy'>Privacy Policy</a>
