@@ -30,6 +30,6 @@ function SettingsConfig($routeProvider) {
       private: true
     })
     .otherwise({
-      redirectTo: '/login'
+      redirectTo: '/home'
     });
 }
