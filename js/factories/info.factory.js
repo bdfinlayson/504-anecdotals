@@ -181,6 +181,57 @@ function infoFactory($http, BASE_URL, $location) {
         cb(data);
         console.log(data);
       });
-    }
+    },
+    findTestStudents: function(cb) {
+      console.log('infoFactory function findOneTest fired!');
+      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+      var user = fb.getAuth();
+      console.log(user);
+      var path = $location.$$path;
+      var pathId = path.slice(12);
+      console.log(pathId);
+
+      $http
+        .get(BASE_URL + '/teachers/' + user.uid + '/tests/' + pathId + '/studentTimes.json')
+        .success(function(data) {
+
+          console.log(data);
+          var info = [];
+
+          var studentName = [];
+          var timeTaken = [];
+          var standardTime = [];
+
+          console.log('from the infoFactory findOneStudent function', data.studentTimes);
+          $.each(data, function(key, value) {
+            // console.log(value.times);
+            data = value;
+            console.log(data.timeTaken);
+            console.log(data.studentName);
+            console.log(data.standardTime);
+
+            studentName.push(data.firstName + ' ' + data.lastName);
+            timeTaken.push(data.timeTaken);
+            standardTime.push(data.standardTime);
+
+            console.log(studentName, timeTaken, standardTime);
+
+
+            data = {
+              labels: studentName,
+              series: [{
+                label: 'Time Taken',
+                values: timeTaken
+              }, {
+                label: 'Standard Time',
+                values: standardTime
+              } ]
+            };
+
+        });
+        cb(data);
+        console.log(data);
+      });
+      }
   };
 }
