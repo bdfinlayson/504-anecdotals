@@ -3,48 +3,49 @@ angular
   .controller('InfoController', InfoController);
 
 
-  function InfoController($http, $rootScope, $scope, $location, BASE_URL, infoFactory) {
-    'use strict';
-    var currWindow = window.location;
-    var currUrl = currWindow.href;
-    console.log(currUrl);
+function InfoController($http, $rootScope, $scope, $location, BASE_URL, infoFactory) {
+  'use strict';
+  var currWindow = window.location;
+  var currUrl = currWindow.href;
+  console.log(currUrl);
 
 
-switch(true) {
-  case (currUrl.includes('classes')):
-    console.log('info switch fired at: ', currUrl);
-    var path = $location.$$path;
-    var pathId = path.slice(14);
-    console.log(pathId);
-    var vm = this;
+  switch (true) {
+    case (currUrl.includes('classes')):
+      console.log('info switch fired at: ', currUrl);
+      var path = $location.$$path;
+      var pathId = path.slice(14);
+      console.log(pathId);
+      var vm = this;
 
-    infoFactory.findOneClass(function (oneClass) {
-      console.log('Class info from the info factory', oneClass);
-      vm.data = oneClass;
-    });
+      infoFactory.findOneClass(function(oneClass) {
+        console.log('Class info from the info factory', oneClass);
+        vm.data = oneClass;
+      });
 
-    break;
+      break;
     case (currUrl.includes('students')):
       console.log('info switch fired at: ', currUrl);
       var vm = this;
 
-      infoFactory.findOneStudent(function (oneStudent) {
+      infoFactory.findOneStudent(function(oneStudent) {
         console.log('Student info from the info factory', oneStudent);
         vm.data = oneStudent;
       });
 
       break;
-      case (currUrl.includes('tests')):
-        console.log('info switch fired at: ', currUrl);
-        var vm = this;
+    case (currUrl.includes('tests')):
+      console.log('info switch fired at: ', currUrl);
+      var vm = this;
 
-        infoFactory.findOneTest(function (oneTest) {
-          console.log('Test info from the info factory', oneTest);
-          vm.data = oneTest;
-        });
-        break;
+      infoFactory.findOneTest(function(oneTest) {
+        console.log('Test info from the info factory', oneTest);
+        vm.data = oneTest;
+      });
+      break;
+
     default:
-    break;
+      break;
   }
 
 
