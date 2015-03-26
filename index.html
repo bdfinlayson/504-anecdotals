@@ -6,24 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <title>504 Anecdotals</title> -->
+  <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.min.css'>
   <link rel='stylesheet' href='css/main.css'>
 </head>
 
 <body>
-  <h1>504 Anecdotals</h1>
-  <a href='#/'>Home</a>
-  <a href='#/login'>Login</a>
-  <a href='#/logout'>Logout</a>
+  
 
   <div ng-view>
 
   </div>
 
   <!--Dependencies -->
+  <script src='bower_components/jquery/dist/jquery.min.js'></script>
+  <script src='bower_components/bootstrap/dist/js/bootstrap.min.js'></script>
   <script src="bower_components/firebase/firebase.js"></script>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/angular-route/angular-route.min.js"></script>
-  <script src='bower_components/jquery/dist/jquery.min.js'></script>
   <script src='bower_components/ng-file-upload/angular-file-upload.min.js'></script>
   <script src='node_modules/d3/d3.min.js'></script>
   <script src='node_modules/requirejs/require.js'></script>
@@ -42,9 +41,8 @@
   <script src="js/configs/portal.config.js"></script>
   <script src="js/configs/settings.config.js"></script>
   <!-- Directives -->
-  <!-- <script src='js/directives/newClassForm.js'></script> -->
   <script src='js/directives/barChart.js'></script>
-  <!--<script src='js/directives/testMeanTimes.js'></script> -->
+  <script src='js/directives/navbar.js'></script>
   <script src='js/directives/dashboard.js'></script>
   <!-- Controllers -->
   <script src="js/controllers/auth.controller.js"></script>
