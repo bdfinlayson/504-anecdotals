@@ -1,22 +1,35 @@
 <login-nav></login-nav>
 
-<form name='loginForm' ng-submit='auth.login()' novalidate>
-  <h2>Login</h2>
-  <div>
-    <input ng-model='auth.user.email' type='email' placeholder='Email' required>
+
+<form class="form-horizontal" ng-submit='auth.login()'>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label" >Email</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.email' type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+    </div>
   </div>
-  <div>
-    <input ng-model='auth.user.password' type='password' placeholder='Password' required>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.password' type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+    </div>
   </div>
-  <div>
-    Remember me:
-    <input type='checkbox' value='Remember Me'>
-    <input type='submit' value='Login'>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
   </div>
-  <div>
-    <a href='#/forgot'>Forgot password?</a>
-    <p>Don't have an account? <a href='#/register'>Sign Up</a></p>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-6">
+      <button type="submit" class="btn btn-success">Sign in</button>
+      <a href='#/forgot'><div class='btn btn-warning'>Forgot password?</div></a>
+      <p>Don't have an account? <a href='#/register'>Sign Up</a></p>
+      <a href='#/terms'>Terms of Service</a>
+      <a href='#/privacy'>Privacy Policy</a>
+    </div>
   </div>
 </form>
-<a href='#/terms'>Terms of Service</a>
-<a href='#/privacy'>Privacy Policy</a>
