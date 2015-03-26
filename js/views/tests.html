@@ -5,8 +5,12 @@
 <div ng-include="'js/templates/new-test-form.html'">
 </div>
 
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newTest">
+  Create New Test
+</button>
 
-<table ng-controller='TestController as tests'>
+
+<table ng-controller='TestController as tests' class="table table-striped">
   <thead>
     <tr>
       <th>Test Name</th>
@@ -24,13 +28,17 @@
       <td>{{test.description}}</td>
       <td>{{test.standardTime}}</td>
       <td>
-        <a href='/#/tests/edit/{{test.testId}}'>Edit</a>
-      </td>
-      <td>
-        <a href='/#/tests/results/{{test.testId}}'>Results</a>
-      </td>
-      <td>
-        <a href='/#/tests/info/{{test.testId}}'>Test Info</a>
+        <div class="dropdown">
+          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Options
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href='/#/tests/edit/{{test.testId}}'>Edit</a></li>
+            <li><a href='/#/tests/results/{{test.testId}}'>Results</a></li>
+            <li><a href='/#/tests/info/{{test.testId}}'>Test Info</a></li>
+          </ul>
+        </div>
       </td>
     </tr>
   </tbody>

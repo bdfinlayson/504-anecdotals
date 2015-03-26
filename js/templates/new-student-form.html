@@ -1,13 +1,27 @@
 
-<form name='newStudentForm' ng-submit='new.submit()'>
-  <label>First Name:</label>
-  <input ng-model='new.thing.firstName' type='text' placeholder='First name'>
-  <br />
-  <label>Last Name:</label>
-  <input ng-model='new.thing.lastName' type='text' placeholder='Last name'>
-  <br />
-  <label>Additional Information:</label>
-  <input ng-model='new.thing.additionalInfo' type='text' placeholder='additional info'>
-  <br />
-  <input type='submit' value='Submit'>
-</form>
+<div class="modal fade" id="newStudent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create New Student</h4>
+      </div>
+      <form class="modal-body" ng-submit='new.submit()'>
+        <div name='newStudentForm' >
+          <label>First Name:</label>
+          <input ng-model='new.thing.firstName' type='text' placeholder='First name'>
+          <br />
+          <label>Last Name:</label>
+          <input ng-model='new.thing.lastName' type='text' placeholder='Last name'>
+          <br />
+          <label>Additional Information:</label>
+          <input ng-model='new.thing.additionalInfo' type='text' placeholder='additional info'>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" value='Submit'>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

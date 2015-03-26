@@ -5,7 +5,11 @@
 <div ng-include="'js/templates/new-student-form.html'">
 </div>
 
-<table ng-controller='StudentController as students'>
+<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newStudent">
+  Create New Student
+</button>
+
+<table ng-controller='StudentController as students' class="table table-striped">
   <thead>
     <tr>
       <th>First Name</th>
@@ -19,11 +23,16 @@
       <td>{{student.lastName}}</td>
       <td>{{student.additionalInfo}}</td>
       <td>
-        <a href='/#/students/edit/{{student.studentId}}'>Edit</a>
-      </td>
-      <td>
-        <a href='/#/students/info/{{student.studentId}}'>Student Info</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <div class="dropdown">
+          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Options
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href='/#/students/edit/{{student.studentId}}'>Edit</a></li>
+            <li><a href='/#/students/info/{{student.studentId}}'>Student Info</a></li>
+          </ul>
+        </div>
+      </tr>
+    </tbody>
+  </table>
