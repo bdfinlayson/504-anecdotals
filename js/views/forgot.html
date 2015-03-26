@@ -1,17 +1,27 @@
 <login-nav></login-nav>
 
-
-<h2>Reset Your Password</h2>
-<h3>Need To Set Your Password?</h3>
-<p>If you have forgotten your password or haven't created one, enter your email address and click Submit.</p>
-<form>
-	<div>
-	  <label>Email Address</label>
-	  <input type='email' placeholder='me@example.com'>
+<div class='row'>
+	<div class='col-sm-offset-3 col-sm-6'>
+		<h3>Need To Set Your Password?</h3>
+		<p>If you have forgotten your password or haven't created one, enter your email address and click Submit.</p>
 	</div>
-	<div>
-	  <input ng-click="auth.forgotPassword()" type='button' value='Submit'>
-	</div>
+</div>
+<form class="form-horizontal" ng-submit='auth.forgotPassword()'>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label" >Email</label>
+    <div class="col-sm-6">
+      <input ng-model='auth.user.email' type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+    </div>
+  </div>
+  <div class="form-group">
+	    <div class="col-sm-offset-3 col-sm-6">
+				<button type="submit" class="btn btn-success">Submit</button>
+			</div>
+			<div class='col-sm-offset-3 col-sm-6'>
+	      <a href='#/terms'>Terms of Service</a>
+			</br>
+	      <a href='#/privacy'>Privacy Policy</a>
+			</div>
+    </div>
+  </div>
 </form>
-<a href='#/terms'>Terms of Service</a>
-<a href='#/privacy'>Privacy Policy</a>
