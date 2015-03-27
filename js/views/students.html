@@ -1,13 +1,11 @@
 <navbar></navbar>
 
-<h2>Students</h2>
+<h2>Students </h2>
 
 <div ng-include="'js/templates/new-student-form.html'">
 </div>
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newStudent">
-  Create New Student
-</button>
+
 
 <table ng-controller='StudentController as students' class="table table-striped">
   <thead>
@@ -24,8 +22,7 @@
       <td>{{student.additionalInfo}}</td>
       <td>
         <div class="dropdown">
-          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Options
+          <button id="dLabel" class='glyphicon glyphicon glyphicon-cog' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -36,3 +33,5 @@
       </tr>
     </tbody>
   </table>
+
+  <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" data-toggle="modal" data-target="#newStudent"></button>

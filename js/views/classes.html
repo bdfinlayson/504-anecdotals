@@ -1,16 +1,14 @@
 <navbar></navbar>
 
 
-<h2>Classes</h2>
+<h2>Classes </h2>
 
 
 
 <div ng-include="'js/templates/new-class-form.html'">
 </div>
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newClass">
-  Create New Class
-</button>
+
 
 <table ng-controller='ClassController as classes' class="table table-striped">
   <thead>
@@ -19,19 +17,19 @@
       <th>Grade Level</th>
     </tr>
   </thead>
-  <tbody>
-    <tr class='rowsOfData' ng-repeat="class in classes.data">
+  <tbody class='rowsOfData' ng-repeat="class in classes.data">
+    <tr >
       <td>{{class.name}}</td>
       <td>{{class.gradeLevel}}</td>
       <td>
         <div class="dropdown">
-          <button id="dLabel" data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-            Options
+          <button id="dLabel" class='glyphicon glyphicon-cog' data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li><a href='/#/classes/edit/{{class.classId}}'>Edit Class</a></li>
             <li><a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
+            <li><a href='/#/classes/clTr/{{class.classId}}'>Add/Remove Tests</a></li>
             <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a><li>
           </ul>
         </div>
@@ -40,7 +38,8 @@
   </tbody>
 </table>
 
-<div ng-controller='ClassController as classes'>
+
+<!-- <div ng-controller='ClassController as classes'>
   <div class="row" >
     <div class="col-sm-6 col-md-4"  ng-repeat="class in classes.data">
       <div class="thumbnail">
@@ -57,4 +56,8 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+
+<button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" data-toggle="modal" data-target="#newClass">
+</button>

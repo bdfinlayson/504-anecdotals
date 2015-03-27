@@ -5,9 +5,6 @@
 <div ng-include="'js/templates/new-test-form.html'">
 </div>
 
-<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#newTest">
-  Create New Test
-</button>
 
 
 <table ng-controller='TestController as tests' class="table table-striped">
@@ -29,8 +26,8 @@
       <td>{{test.standardTime}}</td>
       <td>
         <div class="dropdown">
-          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Options
+          <button id="dLabel" class='glyphicon glyphicon-cog' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -43,3 +40,5 @@
     </tr>
   </tbody>
 </table>
+
+<button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" data-toggle="modal" data-target="#newTest"></button>
