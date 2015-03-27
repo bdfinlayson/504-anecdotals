@@ -58,6 +58,9 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
           var deleteId = fb.child('teachers').child(user.uid).child('classIds').push(classId).key();
           fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'deleteId': deleteId } );
 
+          // $('#alertSuccess').removeClass('hide');
+
+
           break;
         case (currUrl.includes('students')):
           //generate child url and send class id to fb
