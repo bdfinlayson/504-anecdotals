@@ -1,7 +1,11 @@
 <login-nav></login-nav>
 
 
-
+<div class='row'>
+  <div id='alertFailureEmailTaken' class="hide alert alert-danger col-sm-offset-3 col-sm-6" role="alert">Email already in use.</div>
+  <div id='alertFailure' class="hide alert alert-danger col-sm-offset-3 col-sm-6" role="alert">Account information is invalid.</div>
+  <div id='alertSuccess' class="hide alert alert-success col-sm-offset-3 col-sm-6" role="alert">Registration successfull.</div>
+</div>
 
 
 <form class="form-horizontal" name='registerForm' ng-submit='auth.register()' novalidate>

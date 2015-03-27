@@ -17,8 +17,12 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
     authFactory.login(vm.user, function(err, authData) {
       if (err) {
         console.log('Error logging in user:', err);
+        $('#alertFailure').removeClass('hide');
+        $('input[type="password"]').val('');
       } else {
         console.log('Logged in successfully', authData);
+        $('#alertFailure').addClass('hide');
+        $('#alertSuccess').removeClass('hide');
         $rootScope.user = authData;
         clear();
         $location.path('/portal');
@@ -35,10 +39,18 @@ function AuthController($http, $rootScope, $scope, $location, authFactory, BASE_
       console.log('User info from AuthController.register', vm.user);
       if (err && err.code === 'EMAIL_TAKEN') {
         console.log('Error creating user:', err);
+        $('#alertFailureEmailTaken').removeClass('hide');
+        $('input[type="password"]').val('');
         //vm.login();
       } else if (err) {
         console.log('Error creating user:', err);
+        $('#alertFailure').addClass('hide');
+        $('#alertFailure').removeClass('hide');
+        $('input[type="password"]').val('');
       } else {
+        $('#alertFailureEmailTaken').addClass('hide');
+        $('#alertFailure').addClass('hide');
+        $('#alertSuccess').removeClass('hide');
         console.log('User created successfully', authData);
         var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
         var profileId = fb.child('profiles').push({
