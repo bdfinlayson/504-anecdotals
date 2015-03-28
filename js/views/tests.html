@@ -55,6 +55,12 @@
           <li>{{student.name}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
         <ul>
       </td>
+      <td>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Average time taken on {{test.name}}:</strong></p>
+        <ul ng-repeat="time in test.timeInfo">
+          <li>The standard test time was {{time.standardTime}} minutes and students took an average of {{time.averageTime}} to complete the test <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
+        <ul>
+      </td>
     </tr>
   </tbody>
 </table>

@@ -15,28 +15,25 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
 
 
 
-  vm.submit = function() {
+  vm.submit = function(whatToMake) {
+    console.log('what to make is ', whatToMake)
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
     var user = fb.getAuth();
     console.log(user);
-    assignIntToNewModel(user, vm.thing);
+    assignIntToNewModel(user, vm.thing, whatToMake);
 
   };
 
   //assign current id integer to new model instance
 
-  function assignIntToNewModel(user, thing) {
-    //get url location of current window
-    console.log(user, thing);
-    var currWindow = window.location;
-    var currUrl = currWindow.href;
-    console.log(currUrl);
-    checkForInstance(currUrl, user, thing);
+  function assignIntToNewModel(user, thing, whatToMake) {
+
+    checkForInstance(user, thing, whatToMake);
     //check for which instance to assign the new model
-    function checkForInstance(currUrl, user, thing) {
-      console.log(currUrl, thing);
+    function checkForInstance(user, thing, whatToMake) {
+      console.log(thing, whatToMake);
       switch (true) {
-        case (currUrl.includes('classes')):
+        case (whatToMake === "classes"):
           //generate child url and send class data to fb
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
           var classId = fb.child('teachers').child(user.uid).child('classes').push({
@@ -61,7 +58,7 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
 
 
           break;
-        case (currUrl.includes('students')):
+        case (whatToMake === 'students'):
           //generate child url and send class id to fb
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
           var studentId = fb.child('teachers').child(user.uid).child('students').push({
@@ -83,7 +80,7 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
           fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'deleteId': deleteId } );
 
           break;
-        case (currUrl.includes('tests')):
+        case (whatToMake === 'tests'):
           var fb = new Firebase('https://504-anecdotals.firebaseio.com/');
           var testId = fb.child('teachers').child(user.uid).child('tests').push({
             'name': thing.name,

@@ -10,7 +10,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Create New Class</h4>
       </div>
-      <form class="modal-body" ng-submit='new.submit()'>
+      <form class="modal-body" ng-submit='new.submit("classes")'>
         <div name='newClassForm' >
           <label>Class Name:</label>
           <input ng-model='new.thing.name' type='text' placeholder='Class name'>

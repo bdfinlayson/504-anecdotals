@@ -48,6 +48,12 @@
             <li>Took {{test.timeTaken}} minutes on a {{test.standardTime}} minute test ({{test.testName}}) <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
           <ul>
         </td>
+        <td>
+          <p ng-if='student.expanded' ng-repeat='student in students.data'><strong>{{student.firstName}}'s Average Time Over:</strong></p>
+          <ul ng-repeat="time in student.averageTimeOver">
+            <li>Takes {{time.averageTime}}% of allotted time to finish a test <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{time.studentId}}"></a></li>
+          <ul>
+        </td>
     </tbody>
   </table>
 
