@@ -16,10 +16,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="student in students.data">
+    <tr ng-repeat-start="student in students.data">
       <td>{{student.firstName}}</td>
       <td>{{student.lastName}}</td>
       <td>{{student.additionalInfo}}</td>
+      <td>
+        <button ng-if="student.expanded" ng-click="student.expanded = false">-</button>
+        <button ng-if="!student.expanded" ng-click="student.expanded = true">+</button>
+      </td>
       <td>
         <div class="dropdown">
           <button id="dLabel" class='glyphicon glyphicon glyphicon-cog' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,6 +35,19 @@
           </ul>
         </div>
       </tr>
+      <tr ng-if="student.expanded" ng-repeat-end="" >
+        <td>
+          <p><strong>Student in Classes:</strong></p>
+          <ul ng-repeat="class in student.classInfo">
+            <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
+          <ul>
+        </td>
+        <td>
+          <p><strong>Performance Summary:</strong></p>
+          <ul ng-repeat="test in student.testTimes">
+            <li>Took {{test.timeTaken}} minutes on a {{test.standardTime}} minute test ({{test.testName}}) <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
+          <ul>
+        </td>
     </tbody>
   </table>
 
