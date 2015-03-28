@@ -42,13 +42,13 @@
     </tr>
     <tr ng-if="class.expanded" ng-repeat-end="" >
       <td>
-        <p><strong>Tests in Class:</strong></p>
+        <p ng-if='class.expanded' ng-repeat='class in classes.data' ><strong>Tests used in {{class.name}}:</strong></p>
         <ul ng-repeat="test in class.testInfo">
           <li>{{test.name}} <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
         <ul>
       </td>
       <td>
-        <p><strong>Students In Class:</strong></p>
+        <p ng-if='class.expanded' ng-repeat='class in classes.data'><strong>Students in {{class.name}}:</strong></p>
         <ul ng-repeat="student in class.studentsInfo">
           <li>{{student.name}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
         <ul>

@@ -18,12 +18,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="test in tests.data">
+    <tr ng-repeat-start="test in tests.data">
       <td>{{test.name}}</td>
       <td>{{test.subject}}</td>
       <td>{{test.date}}</td>
       <td>{{test.description}}</td>
       <td>{{test.standardTime}}</td>
+      <td>
+        <button ng-if="test.expanded" ng-click="test.expanded = false">-</button>
+        <button ng-if="!test.expanded" ng-click="test.expanded = true">+</button>
+      </td>
       <td>
         <div class="dropdown">
           <button id="dLabel" class='glyphicon glyphicon-cog' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,6 +40,20 @@
             <li><a href='/#/tests/info/{{test.testId}}'>Test Info</a></li>
           </ul>
         </div>
+      </td>
+    </tr>
+    <tr ng-if="test.expanded" ng-repeat-end="" >
+      <td>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Classes using {{test.name}}:</strong></p>
+        <ul ng-repeat="class in test.classInfo">
+          <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
+        <ul>
+      </td>
+      <td>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Students given {{test.name}}:</strong></p>
+        <ul ng-repeat="student in test.studentsInfo">
+          <li>{{student.name}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
+        <ul>
       </td>
     </tr>
   </tbody>
