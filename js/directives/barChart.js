@@ -3,7 +3,7 @@ angular
   .directive('barChart', function() {
     'use strict';
     return {
-      restrict: 'EA',
+      restrict: 'E',
       scope: {
         data: '='
       },

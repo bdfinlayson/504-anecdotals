@@ -18,9 +18,14 @@
     </tr>
   </thead>
   <tbody class='rowsOfData'>
-    <tr  ng-repeat="class in classes.data">
+    <tr  ng-repeat-start="class in classes.data">
       <td>{{class.name}}</td>
       <td>{{class.gradeLevel}}</td>
+      <td>
+      <td>
+        <button ng-if="class.expanded" ng-click="class.expanded = false">-</button>
+        <button ng-if="!class.expanded" ng-click="class.expanded = true">+</button>
+      </td>
       <td>
         <div class="dropdown">
           <button id="dLabel" class='glyphicon glyphicon-cog' data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
@@ -33,6 +38,20 @@
             <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a><li>
           </ul>
         </div>
+      </td>
+    </tr>
+    <tr ng-if="class.expanded" ng-repeat-end="" >
+      <td>
+        <p><strong>Tests in Class:</strong></p>
+        <ul ng-repeat="test in class.testInfo">
+          <li>{{test.name}}</li>
+        <ul>
+      </td>
+      <td>
+        <p><strong>Students In Class:</strong></p>
+        <ul ng-repeat="student in class.studentsInfo">
+          <li>{{student.name}}</li>
+        <ul>
       </td>
     </tr>
   </tbody>
