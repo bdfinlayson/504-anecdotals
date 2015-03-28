@@ -44,13 +44,13 @@
       <td>
         <p><strong>Tests in Class:</strong></p>
         <ul ng-repeat="test in class.testInfo">
-          <li>{{test.name}}</li>
+          <li>{{test.name}} <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
         <ul>
       </td>
       <td>
         <p><strong>Students In Class:</strong></p>
         <ul ng-repeat="student in class.studentsInfo">
-          <li>{{student.name}}</li>
+          <li>{{student.name}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
         <ul>
       </td>
     </tr>
