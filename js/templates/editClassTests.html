@@ -14,7 +14,7 @@
       <td>{{test.name}}</td>
       <td>{{test.description}}</td>
       <td>
-        <button ng-click='tests.removeTestFromClass(test.testId)'>Remove From Class</a>
+        <button ng-click='tests.removeTestFromClass(test.testId, test.removeTestFromClass, test.removeClassFromTest, test.deleteTestInfoFromClass)'>Remove From Class</a>
       </td>
       <td>
         <a href='/#/tests/results/{{test.testId}}'>Results</a>
@@ -38,7 +38,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="test in tests.data">
+    <tr ng-repeat="test in tests.data" id="{{test.testId}}">
       <td>{{test.name}}</td>
       <td>{{test.subject}}</td>
       <td>{{test.date}}</td>

@@ -129,13 +129,35 @@ angular
     //         console.log('class deleted');
     //       });
     //   });
-    };
+  };
 
 // vm.sendTestResults = function () {
 // testFactory.update(pathId, vm.newStudent, function () {
 //   $location.path('/students/');
 // });
 // };
+vm.removeTestFromClass = function (testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass) {
+  console.log(testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass);
+  var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+  var user = fb.getAuth();
+  console.log(user);
+  var data;
+
+  //remove test id from "tests" in class
+
+  fb.child('teachers').child(user.uid).child('classes').child(pathId).child('tests').child(removeTestFromClass).remove();
+
+  //remove class id from test in "test/classes"
+
+  fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').child(removeClassFromTest).remove();
+
+  //remove test info from class in "class/testInfo"
+
+  fb.child('teachers').child(user.uid).child('classes').child(pathId).child('testInfo').child(deleteTestInfoFromClass).remove();
+
+  document.querySelector('#' + testId).remove();
+
+};
 
 
   }

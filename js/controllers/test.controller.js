@@ -32,23 +32,28 @@ angular
 
 
     //push class id to test
-    fb.child('teachers').child(user.uid).child('tests').child(testId).update({ 'classId': classId });
+    var removeClassFromTest = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push(classId).key();
 
     //push test id to class
-    var deleteStudentInClassLocationId = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
+    var removeTestFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
 
     //push test info to class
 
-    fb.child('teachers').child(user.uid).child('classes').child(classId).child('testInfo').child(testId).update({
+    var deleteTestInfoFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('testInfo').push({
       'name': data.name,
       'subject': data.subject,
       'date': data.date,
       'description': data.description,
       'standardTime': data.standardTime,
-      'testId': data.testId
+      'testId': data.testId,
+      'removeClassFromTest': removeClassFromTest,
+      'removeTestFromClass': removeTestFromClass
+    }).key();
+
+    //update delete testinfo key in test within class
+    fb.child("teachers").child(user.uid).child("classes").child(classId).child("testInfo").child(deleteTestInfoFromClass).update( {
+      'deleteTestInfoFromClass': deleteTestInfoFromClass
     });
-
-
 
     //update delete class location to student
     // fb.child('teachers').child(user.uid).child('students').child(studentInfo.studentId).child('deleteClassId').update({'deleteClassId': deleteClassInStudentLocationId});
@@ -59,6 +64,9 @@ angular
     //append student to list of current students in class
     $('tbody.testsInClass').append('<tr id="' + testInfo.testId + '"><td>' + testInfo.name + '</td><td>' + testInfo.description + '</td><td><button ng-click="tests.removeTestFromClass()">' + "Remove From Class" + '</button></td><td><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></td></tr>');
   });
+
+  document.querySelector('#' + testId).remove();
+
 
 
 };
