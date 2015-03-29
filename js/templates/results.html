@@ -1,4 +1,4 @@
-<navbar></navbar>
+<!-- <navbar></navbar>
 
 
 <h2>Test: {{results.results.name}}</h2>
@@ -13,5 +13,28 @@
       Time Taken: <input type='number' ng-model="student.timeTaken" placeholder="time taken" required>
       <input type="submit" ng-click="students.sendTestResults(student)">
     </form>
+  </div>
+</div> -->
+
+<div ng-repeat="test in tests.newClass.testInfo" class="modal fade" id="{{test.testId}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel" >Report Times for {{test.name}}</h4>
+      </div>
+      <form class="modal-body" ng-submit='edit.sendTestResults(test.testId)'>
+        <div ng-repeat="student in tests.newClass.studentInfo" class="form-group" name='resultsForm' >
+          <label for='student'>{{student.firstName}} {{student.lastName}}:</label>
+          <input class="form-control" id="student" ng-model='edit.test.timeTaken' type='number' placeholder='Time taken (in minutes)' required>
+        </div>
+        <div class='form-group'>
+          <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
+        </div>
+        <div class='form-group'>
+          <input type="submit" class="btn btn-primary form-control" ng-click="edit.sendTestResults(test.testId)" value='Submit'>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

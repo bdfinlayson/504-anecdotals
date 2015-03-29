@@ -29,6 +29,8 @@ function testFactory($http, BASE_URL) {
 
       });
 //update the class object with student time data
+console.log(data.classId);
+
       fb.child('teachers').child(user.uid).child('classes').child(data.classId).child('testTimes').push({
         'firstName': student.firstName,
         'lastName': student.lastName,

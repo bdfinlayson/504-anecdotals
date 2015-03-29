@@ -1,5 +1,7 @@
 <navbar></navbar>
 
+<div ng-include="'js/templates/results.html'">
+</div>
 
 <h2>Tests in your {{tests.newClass.name}} class</h2>
 <table ng-controller='EditClassController as tests' class="table table-striped">
@@ -17,12 +19,13 @@
         <button ng-click='tests.removeTestFromClass(test.testId, test.removeTestFromClass, test.removeClassFromTest, test.deleteTestInfoFromClass)'>Remove From Class</a>
       </td>
       <td>
-        <a href='/#/tests/results/{{test.testId}}'>Results</a>
+        <button type="button" class="btn btn-default btn-md glyphicon glyphicon-time" data-toggle="modal" data-target="#{{test.testId}}">
       </td>
     </tr>
   </tbody>
 </table>
 
+<!-- </button><a href='/#/tests/results/{{test.testId}}'>Results</a> -->
 
 
 

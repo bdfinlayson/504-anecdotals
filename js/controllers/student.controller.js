@@ -15,6 +15,7 @@ angular
   });
 
   vm.sendTestResults = function (student) {
+    console.log(student);
 
     var vm = this;
     console.log(vm);
