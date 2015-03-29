@@ -8,26 +8,33 @@
         <h4 class="modal-title" id="myModalLabel">Create New Test</h4>
       </div>
       <form class="modal-body" ng-submit='new.submit("tests")'>
-        <div name='newTestForm' >
-          <label>Test Name:</label>
-          <input ng-model='new.thing.name' type='text' placeholder='Test name'>
-          <br />
-          <label>Subject:</label>
-          <input ng-model='new.thing.subject' type='text' placeholder='type of test'>
-          <br />
-          <label>Test Date:</label>
-          <input ng-model='new.thing.date' type='text' placeholder='test date'>
-          <br />
-          <label>Test Description:</label>
-          <input ng-model='new.thing.description' type='text' placeholder='description'>
-          <br />
-          <label>Standard Time Allotted:</label>
-          <input ng-model='new.thing.standardTime' type='number' placeholder='minutes'>
+        <div class="form-group" name='newTestForm' >
+          <label for='testName'>Test Name:</label>
+          <input class="form-control" id='testName' ng-model='new.thing.name' type='text' placeholder='Test name'>
+        </div>
+        <div class='form-group'>
+          <label for='subject'>Subject:</label>
+          <input class="form-control" if='subject' ng-model='new.thing.subject' type='text' placeholder='type of test'>
+        </div>
+        <div class='form-group'>
+          <label for='testDate'>Test Date:</label>
+          <input class="form-control" id='testDate' ng-model='new.thing.date' type='text' placeholder='test date'>
+        </div>
+        <div class="form-group">
+          <label for='testDesc'>Test Description:</label>
+          <input class="form-control" id='testDesc' ng-model='new.thing.description' type='text' placeholder='description'>
+        </div>
+        <div class="form-group">
+          <label for='stdTime'>Standard Time Allotted:</label>
+          <input class="form-control" id='stdTime' ng-model='new.thing.standardTime' type='number' placeholder='minutes'>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value='Submit'>
-        </div>
+          <div class='form-group'>
+            <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
+          </div>
+          <div class='form-group'>
+            <input type="submit" class="btn btn-primary form-control" value='Submit'>
+          </div>
       </form>
     </div>
   </div>

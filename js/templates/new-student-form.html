@@ -7,19 +7,24 @@
         <h4 class="modal-title" id="myModalLabel">Create New Student</h4>
       </div>
       <form class="modal-body" ng-submit='new.submit("students")'>
-        <div name='newStudentForm' >
-          <label>First Name:</label>
-          <input ng-model='new.thing.firstName' type='text' placeholder='First name'>
-          <br />
-          <label>Last Name:</label>
-          <input ng-model='new.thing.lastName' type='text' placeholder='Last name'>
-          <br />
-          <label>Additional Information:</label>
-          <input ng-model='new.thing.additionalInfo' type='text' placeholder='additional info'>
+        <div class="form-group" name='newStudentForm' >
+          <label for='firstName'>First Name:</label>
+          <input class="form-control" id="firstName" ng-model='new.thing.firstName' type='text' placeholder='First name'>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input class="form-control" id="lastName" ng-model='new.thing.lastName' type='text' placeholder='Last name'>
+        </div>
+        <div class='form-group'>
+          <label for='addInfo'>Additional Information:</label>
+          <input class="form-control" id='addInfo' ng-model='new.thing.additionalInfo' type='text' placeholder='additional info'>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value='Submit'>
+          <div class='form-group'>
+          <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
+        </div>
+        <div class='form-group'>
+          <input type="submit" class="btn btn-primary form-control" value='Submit'>
         </div>
       </form>
     </div>

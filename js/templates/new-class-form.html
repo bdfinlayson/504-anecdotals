@@ -1,8 +1,5 @@
 
 
-<!-- <div id='alertSuccess' class="hide alert alert-success col-sm-offset-3 col-sm-6" role="alert">New class created.</div> -->
-
-
 <div class="modal fade" id="newClass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -11,19 +8,21 @@
         <h4 class="modal-title" id="myModalLabel">Create New Class</h4>
       </div>
       <form class="modal-body" ng-submit='new.submit("classes")'>
-        <div name='newClassForm' >
-          <label>Class Name:</label>
-          <input ng-model='new.thing.name' type='text' placeholder='Class name'>
-          <br />
-          <label>Grade Level:</label>
-          <input ng-model='new.thing.gradeLevel' type='text' placeholder='Grade level'>
-          <!-- <br />
-          <input class="btn btn-default" id='submitNew' type='submit' value='Submit'> -->
+        <div class="form-group" name='newClassForm'>
+          <label for="className">Class Name:</label>
+          <input id='className' class="form-control" ng-model='new.thing.name' type='text' placeholder='Class name'>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value='Submit'>
+        <div class='form-group'>
+          <label for="gradeLevel">Grade Level:</label>
+          <input id="gradeLevel" class="form-control" ng-model='new.thing.gradeLevel' type='text' placeholder='Grade level'>
         </div>
+          <div class="modal-footer">
+            <div class='form-group'>
+              <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
+            </div>
+            <div class='form-group'>
+              <input type="submit" class="btn btn-primary form-control" value='Submit'>
+          </div>
       </form>
     </div>
   </div>
