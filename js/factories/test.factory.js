@@ -6,48 +6,47 @@ function testFactory($http, BASE_URL) {
   'use strict';
   return {
 
-    updateStudentTime: function(pathId, student, cb) {
+    updateStudentTime: function(student, testId, testInfo, classId, cb) {
+      console.log('updateStudentTime function fired!', student, testId, testInfo, classId);
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
 
 
 
-      $.getJSON(BASE_URL + '/teachers/' + user.uid + '/tests/' + pathId + '.json', function (data) {
+      $.getJSON(BASE_URL + '/teachers/' + user.uid + '/tests/' + testId + '.json', function (data) {
         console.log(data);
         var percentageOver = ((student.timeTaken / data.standardTime) * 100) - 100;
         console.log(percentageOver);
 
 
 //update the test object with student time data
-      fb.child('teachers').child(user.uid).child('tests').child(pathId).child('studentTimes').push({
+      fb.child('teachers').child(user.uid).child('tests').child(testId).child('studentTimes').push({
         'firstName': student.firstName,
         'lastName': student.lastName,
         'timeTaken': student.timeTaken,
         'studentId': student.studentId,
         'percentageOver': percentageOver,
-        'standardTime': data.standardTime
+        'standardTime': testInfo.standardTime
 
       });
 //update the class object with student time data
-console.log(data.classId);
-
-      fb.child('teachers').child(user.uid).child('classes').child(data.classId).child('testTimes').push({
+      fb.child('teachers').child(user.uid).child('classes').child(classId).child('testTimes').push({
         'firstName': student.firstName,
         'lastName': student.lastName,
         'timeTaken': student.timeTaken,
         'studentId': student.studentId,
         'percentageOver': percentageOver,
         'standardTime': data.standardTime,
-        'testName': data.name,
-        'testId': data.testId
+        'testName': testInfo.name,
+        'testId': testInfo.testId
       });
 //update the student object with the student time data
       fb.child('teachers').child(user.uid).child('students').child(student.studentId).child('testTimes').push({
         'timeTaken': student.timeTaken,
         'percentageOver': percentageOver,
-        'standardTime': data.standardTime,
-        'testName': data.name,
-        'testId': data.testId
+        'standardTime': testInfo.standardTime,
+        'testName': testInfo.name,
+        'testId': testInfo.testId
       });
 
     });

@@ -19,6 +19,7 @@ angular
     var path = $location.$$path;
     var classId = path.slice(14);
     var testInfo;
+    var classInfo;
     console.log(classId, testId);
 
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
@@ -30,9 +31,17 @@ angular
       testInfo = data;
       console.log(data);
 
+      //get class info
+      $.getJSON('http://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + classId + '.json', function(classes) {
+        classInfo = classes;
+        console.log(classes);
+
 
     //push class id to test
-    var removeClassFromTest = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push(classId).key();
+    var removeClassFromTest = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push({
+      'classId':classId,
+      'name': classInfo.name
+    }).key();
 
     //push test id to class
     var removeTestFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
@@ -62,12 +71,12 @@ angular
 
 
     //append student to list of current students in class
-    $('tbody.testsInClass').append('<tr id="' + testInfo.testId + '"><td>' + testInfo.name + '</td><td>' + testInfo.description + '</td><td><button ng-click="tests.removeTestFromClass()">' + "Remove From Class" + '</button></td><td><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></td></tr>');
+    $('tbody.testsInClass').append('<tr id="' + testInfo.testId + '"><td>' + testInfo.name + '</td><td>' + testInfo.description + '</td><td><button ng-click="tests.removeTestFromClass()">' + "Remove From Class" + '</button></td><td><button type="button" class="btn btn-default btn-md glyphicon glyphicon-time" data-toggle="modal" data-target="#'+testId+'"></button></td></tr>');
   });
 
   document.querySelector('#' + testId).remove();
 
-
+});
 
 };
 }

@@ -154,9 +154,36 @@ vm.removeTestFromClass = function (testId, removeTestFromClass, removeClassFromT
   //remove test info from class in "class/testInfo"
 
   fb.child('teachers').child(user.uid).child('classes').child(pathId).child('testInfo').child(deleteTestInfoFromClass).remove();
+  console.log('removed data from three locations');
 
   document.querySelector('#' + testId).remove();
 
+};
+
+vm.sendTestResults = function(student, testId, testInfo) {
+  console.log('sendTestResults function fired!', student, testId, testInfo);
+
+  var vm = this;
+  console.log(this);
+  var path = $location.$$path;
+  var classId = path.slice(14);
+  console.log(student);
+  $('input[type="number"]').val('');
+
+  $('#' + student.studentId).remove();
+
+
+testFactory.updateStudentTime(student, testId, testInfo, classId, function () {
+
+});
+};
+
+vm.clearValues = function() {
+  $('input[type="number"]').val('');
+  $('input[type="number"]').removeClass("ng-valid");
+  $('input[type="number"]').removeClass("ng-valid-required");
+  $('input[type="number"]').addClass("ng-invalid");
+  $('input[type="number"]').addClass("ng-invalid-required");
 };
 
 

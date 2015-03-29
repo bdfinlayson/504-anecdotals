@@ -36,6 +36,7 @@ angular
     var path = $location.$$path;
     var classId = path.slice(14);
     var studentInfo;
+    var classInfo;
     console.log(classId, studentId);
 
 
@@ -50,10 +51,17 @@ angular
     $.getJSON('http://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + studentId + '.json', function(data) {
       studentInfo = data;
       console.log(data);
+      //get class data
+      $.getJSON('http://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + classId + '.json', function(classes) {
+        classInfo = classes;
+        console.log(classInfo);
 
 
-    //push class id to student
-    var removeClassFromStudent = fb.child('teachers').child(user.uid).child('students').child(studentId).child('classes').push(classId).key();
+    //push class id and info to student
+    var removeClassFromStudent = fb.child('teachers').child(user.uid).child('students').child(studentId).child('classes').push( {
+      'classId': classId,
+      'name': classInfo.name
+    }).key();
 
     //push student id to class
     var removeStudentFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('students').push(studentId).key();
@@ -88,8 +96,7 @@ angular
 
   document.querySelector('#' + studentId).remove();
 
-
-
+});
 
   };
 

@@ -40,7 +40,7 @@
       <tr ng-if="student.expanded" ng-repeat-end="" >
         <td>
           <p ng-if='student.expanded' ng-repeat='student in students.data'><strong>{{student.firstName}}'s Classes:</strong></p>
-          <ul ng-repeat="class in student.classInfo">
+          <ul ng-repeat="class in student.classes">
             <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
           <ul>
         </td>

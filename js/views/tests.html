@@ -47,14 +47,14 @@
     <tr ng-if="test.expanded" ng-repeat-end="" >
       <td>
         <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Classes using {{test.name}}:</strong></p>
-        <ul ng-repeat="class in test.classInfo">
+        <ul ng-repeat="class in test.classes">
           <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
         <ul>
       </td>
       <td>
         <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Students given {{test.name}}:</strong></p>
-        <ul ng-repeat="student in test.studentsInfo">
-          <li>{{student.name}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
+        <ul ng-repeat="student in test.studentTimes">
+          <li>{{student.firstName}} {{student.lastName}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
         <ul>
       </td>
       <td>
