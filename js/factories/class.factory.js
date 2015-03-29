@@ -64,23 +64,23 @@ function classFactory($http, BASE_URL) {
       var user = fb.getAuth();
 
       $http
-        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/students.json')
-        .success(function(students) {
-          var array = [];
-
-          if (students) {
-            $.each(students, function(key, value) {
-              $http
-                .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + value + '.json')
-                .success(function(data) {
-                  array.push(data);
-                  cb(array);
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/studentInfo.json')
+        .success(function(data) {
+          // var array = [];
+          //
+          // if (students) {
+          //   $.each(students, function(key, value) {
+          //     $http
+          //       .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + value + '.json')
+          //       .success(function(data) {
+          //         array.push(data);
+                  cb(data);
                 });
 
-            });
-          }
+            // });
+          // }
 
-        });
+        // });
     }
   };
 }

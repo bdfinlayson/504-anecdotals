@@ -12,13 +12,6 @@ angular
     var classInfo;
     var classStudentInfo;
 
-
-    classFactory.findOne(pathId, function (clss) {
-      vm.newClass = clss;
-      classInfo = clss;
-      console.log(clss, vm.newClass);
-    });
-
     classFactory.findAllStudents(pathId, function(students) {
       vm.data = students;
       classStudentInfo = students;
@@ -29,6 +22,14 @@ angular
       console.log('from the test controller', tests);
       vm.data = tests;
   });
+
+    classFactory.findOne(pathId, function (clss) {
+      vm.newClass = clss;
+      classInfo = clss;
+      console.log(clss, vm.newClass);
+    });
+
+
 
     vm.deleteClass = function (cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
@@ -70,37 +71,64 @@ angular
   });
 };
 
-  vm.removeStudentFromClass = function (studentId) {
+  vm.removeStudentFromClass = function (studentId, removeStudentFromClass, removeClassFromStudent, deleteStudentInfoFromClass) {
+    console.log(studentId, removeStudentFromClass, removeClassFromStudent, deleteStudentInfoFromClass);
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
     var user = fb.getAuth();
     console.log(user);
     var data;
-    $http
-      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '.json')
-      .success(function(cb) {
-        data = cb;
-        console.log(data);
-      });
 
-    var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
-    var studentUrl = BASE_URL + '/teachers/' + user.uid + '/students/' + classInfo.deleteId + '.json';
+    //remove student id from "students" in class
 
-    $http
-      .delete(teacherUrl)
-      .success(function () {
-        console.log('class in teacher deleted');
-      });
+    fb.child('teachers').child(user.uid).child('classes').child(pathId).child('students').child(removeStudentFromClass).remove();
 
-    $http
-      .delete(url)
-      .success(function () {
-        console.log('class deleted');
-        $http
-          .delete(url)
-          .success(function () {
-            console.log('class deleted');
-          });
-      });
+    //remove class id from student in "student/classes"
+
+    fb.child('teachers').child(user.uid).child('students').child(studentId).child('classes').child(removeClassFromStudent).remove();
+
+    //remove student info from class in "studentInfo"
+
+    fb.child('teachers').child(user.uid).child('classes').child(pathId).child('studentInfo').child(deleteStudentInfoFromClass).remove();
+
+    document.querySelector('#' + studentId).remove();
+
+
+
+
+
+    // $http
+    //   .delete('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + pathId + '/students/' + removeStudentFromClass)
+    //   .success(function() {
+    //     console.log('student id removed from the class');
+    //   });
+
+
+    // $http
+    //   .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '.json')
+    //   .success(function(cb) {
+    //     data = cb;
+    //     console.log(data);
+    //   });
+    //
+    // var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
+    // var studentUrl = BASE_URL + '/teachers/' + user.uid + '/students/' + classInfo.deleteId + '.json';
+    //
+    // $http
+    //   .delete(teacherUrl)
+    //   .success(function () {
+    //     console.log('class in teacher deleted');
+    //   });
+    //
+    // $http
+    //   .delete(url)
+    //   .success(function () {
+    //     console.log('class deleted');
+    //     $http
+    //       .delete(url)
+    //       .success(function () {
+    //         console.log('class deleted');
+    //       });
+    //   });
     };
 
 // vm.sendTestResults = function () {
