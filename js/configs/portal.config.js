@@ -7,8 +7,8 @@ function PortalConfig($routeProvider) {
   $routeProvider
     .when('/portal', {
       templateUrl: '/js/views/portal.html',
-      controller: 'AuthController',
-      controllerAs: 'auth',
+      controller: 'PortalController',
+      controllerAs: 'portal',
       private: true
     })
     .when('/settings', {
