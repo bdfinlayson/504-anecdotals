@@ -18,6 +18,6 @@ function AnecdotalsConfig($routeProvider) {
       private: false
     })
     .otherwise({
-      redirectTo: '/home'
+      redirectTo: '/login'
     });
 }

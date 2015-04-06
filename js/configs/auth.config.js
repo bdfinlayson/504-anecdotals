@@ -35,11 +35,8 @@ function authConfig($routeProvider) {
       controllerAs: 'auth',
       private: false
     })
-    .when('/home', {
-      templateUrl: '/js/views/home.html',
-      controller: 'AuthController',
-      controllerAs: 'auth',
-      private: false
+    .otherwise({
+      redirectTo: '/login'
     });
 }
 

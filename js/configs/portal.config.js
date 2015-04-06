@@ -96,6 +96,6 @@ function PortalConfig($routeProvider) {
       private: true
     })
     .otherwise({
-      redirectTo: '/home'
+      redirectTo: '/portal'
     });
 }
