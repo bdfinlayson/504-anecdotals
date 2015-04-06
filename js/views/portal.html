@@ -12,7 +12,7 @@
         <h3>Your Classes</h3>
         <ul ng-repeat="class in portal.data.classes">
           <li>{{class.name}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/classes/info/{{class.classId}}"></a>
           </li>
         </ul>
         <p><a href="#/classes" class="btn btn-primary" role="button">Go To Classes!</a></p>
@@ -25,7 +25,7 @@
         <h3>Your Students</h3>
         <ul ng-repeat="student in portal.data.students">
           <li>{{student.firstName}} {{student.lastName}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/students/info/{{student.studentId}}"></a>
           </li>
         </ul>
         <p><a href="#/students" class="btn btn-primary" role="button">Go To Students!</a></p>
@@ -38,7 +38,7 @@
         <h3>Your Tests</h3>
         <ul ng-repeat="test in portal.data.tests">
           <li>{{test.name}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/tests/info/{{test.testId}}"></a>
           </li>
         </ul>
         <p><a href="#/tests" class="btn btn-primary" role="button">Go To Tests!</a></p>

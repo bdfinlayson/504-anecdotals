@@ -32,8 +32,8 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li><a href='/#/students/edit/{{student.studentId}}'>Edit</a></li>
-            <li><a href='/#/students/info/{{student.studentId}}'>Student Info</a></li>
+            <li><a href='#/students/edit/{{student.studentId}}'>Edit</a></li>
+            <li><a href='#/students/info/{{student.studentId}}'>Student Info</a></li>
           </ul>
         </div>
     </tr>
@@ -44,7 +44,7 @@
         </p>
         <ul ng-repeat="class in student.classes">
           <li>{{class.name}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/classes/info/{{class.classId}}"></a>
           </li>
           <ul>
       </td>
@@ -54,7 +54,7 @@
         </p>
         <ul ng-repeat="test in student.testTimes">
           <li>Took {{test.timeTaken}} minutes on a {{test.standardTime}} minute test ({{test.testName}})
-            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/tests/info/{{test.testId}}"></a>
           </li>
           <ul>
       </td>
@@ -64,7 +64,7 @@
         </p>
         <ul ng-repeat="time in student.averageTimeOver">
           <li>Takes {{time.averageTime}}% of allotted time to finish a test
-            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{time.studentId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/students/info/{{time.studentId}}"></a>
           </li>
           <ul>
       </td>

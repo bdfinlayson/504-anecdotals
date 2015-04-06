@@ -32,10 +32,10 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li><a href='/#/classes/edit/{{class.classId}}'>Edit Class</a></li>
-            <li><a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
-            <li><a href='/#/classes/clTr/{{class.classId}}'>Add/Remove Tests</a></li>
-            <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a>
+            <li><a href='#/classes/edit/{{class.classId}}'>Edit Class</a></li>
+            <li><a href='#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
+            <li><a href='#/classes/clTr/{{class.classId}}'>Add/Remove Tests</a></li>
+            <li><a href='#/classes/info/{{class.classId}}'>Class Info</a>
               <li>
           </ul>
         </div>
@@ -48,7 +48,7 @@
         </p>
         <ul ng-repeat="test in class.testInfo">
           <li>{{test.name}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/tests/info/{{test.testId}}"></a>
           </li>
           <ul>
       </td>
@@ -58,7 +58,7 @@
         </p>
         <ul ng-repeat="student in class.studentInfo">
           <li>{{student.firstName}} {{student.lastName}}
-            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a>
+            <a class="glyphicon glyphicon-info-sign" href="#/students/info/{{student.studentId}}"></a>
           </li>
           <ul>
       </td>
