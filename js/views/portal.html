@@ -1,3 +1,42 @@
 <navbar></navbar>
 
 <h1>Portal</h1>
+
+<h2>Welcome, {{portal.data.firstName}} {{portal.data.lastName}}!</h2>
+
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Your Classes</h3>
+        <ul ng-repeat="class in portal.data.classes">
+          <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
+        </ul>
+        <p><a href="#/classes" class="btn btn-primary" role="button">Go To Classes!</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Your Students</h3>
+        <ul ng-repeat="student in portal.data.students">
+          <li>{{student.firstName}} {{student.lastName}} <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
+        </ul>
+        <p><a href="#/students" class="btn btn-primary" role="button">Go To Students!</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>Your Tests</h3>
+        <ul ng-repeat="test in portal.data.tests">
+          <li>{{test.name}} <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
+        </ul>
+        <p><a href="#/tests" class="btn btn-primary" role="button">Go To Tests!</a></p>
+      </div>
+    </div>
+  </div>
+</div>
