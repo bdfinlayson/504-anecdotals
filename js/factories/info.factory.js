@@ -106,17 +106,17 @@ function infoFactory($http, BASE_URL, $location) {
               }, {
                 label: 'Standard Time',
                 values: standardTime
-              } ]
+              }]
             };
 
 
 
-          // cb(data);
-          // console.log(data);
+            // cb(data);
+            // console.log(data);
+          });
+          cb(data);
+          console.log(data);
         });
-        cb(data);
-        console.log(data);
-      });
     },
     findClassTests: function(cb) {
       console.log('infoFactory function findOneStudent fired!');
@@ -170,17 +170,17 @@ function infoFactory($http, BASE_URL, $location) {
               }, {
                 label: 'Standard Time',
                 values: standardTime
-              } ]
+              }]
             };
 
 
 
-          // cb(data);
-          // console.log(data);
+            // cb(data);
+            // console.log(data);
+          });
+          cb(data);
+          console.log(data);
         });
-        cb(data);
-        console.log(data);
-      });
     },
     findTestStudents: function(cb) {
       console.log('infoFactory function findOneTest fired!');
@@ -225,13 +225,13 @@ function infoFactory($http, BASE_URL, $location) {
               }, {
                 label: 'Standard Time',
                 values: standardTime
-              } ]
+              }]
             };
 
+          });
+          cb(data);
+          console.log(data);
         });
-        cb(data);
-        console.log(data);
-      });
-      }
+    }
   };
 }

@@ -1,15 +1,15 @@
 angular
   .module('anecdotals')
-  .controller('TestController',TestController);
+  .controller('TestController', TestController);
 
-  function TestController($location, testFactory) {
-    'use strict';
+function TestController($location, testFactory) {
+  'use strict';
 
-    var vm = this;
+  var vm = this;
 
-    testFactory.findAll(function (tests) {
-      console.log('from the test controller', tests);
-      vm.data = tests;
+  testFactory.findAll(function(tests) {
+    console.log('from the test controller', tests);
+    vm.data = tests;
   });
 
 
@@ -37,46 +37,46 @@ angular
         console.log(classes);
 
 
-    //push class id to test
-    var removeClassFromTest = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push({
-      'classId':classId,
-      'name': classInfo.name
-    }).key();
+        //push class id to test
+        var removeClassFromTest = fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').push({
+          'classId': classId,
+          'name': classInfo.name
+        }).key();
 
-    //push test id to class
-    var removeTestFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
+        //push test id to class
+        var removeTestFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('tests').push(testId).key();
 
-    //push test info to class
+        //push test info to class
 
-    var deleteTestInfoFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('testInfo').push({
-      'name': data.name,
-      'subject': data.subject,
-      'date': data.date,
-      'description': data.description,
-      'standardTime': data.standardTime,
-      'testId': data.testId,
-      'removeClassFromTest': removeClassFromTest,
-      'removeTestFromClass': removeTestFromClass
-    }).key();
+        var deleteTestInfoFromClass = fb.child('teachers').child(user.uid).child('classes').child(classId).child('testInfo').push({
+          'name': data.name,
+          'subject': data.subject,
+          'date': data.date,
+          'description': data.description,
+          'standardTime': data.standardTime,
+          'testId': data.testId,
+          'removeClassFromTest': removeClassFromTest,
+          'removeTestFromClass': removeTestFromClass
+        }).key();
 
-    //update delete testinfo key in test within class
-    fb.child("teachers").child(user.uid).child("classes").child(classId).child("testInfo").child(deleteTestInfoFromClass).update( {
-      'deleteTestInfoFromClass': deleteTestInfoFromClass
+        //update delete testinfo key in test within class
+        fb.child("teachers").child(user.uid).child("classes").child(classId).child("testInfo").child(deleteTestInfoFromClass).update({
+          'deleteTestInfoFromClass': deleteTestInfoFromClass
+        });
+
+        //update delete class location to student
+        // fb.child('teachers').child(user.uid).child('students').child(studentInfo.studentId).child('deleteClassId').update({'deleteClassId': deleteClassInStudentLocationId});
+        //push delete student location to class
+        // fb.child('teachers').child(user.uid).child('classes').child(classId).child('students').push(deleteStudentInClassLocationId).key();
+
+
+        //append student to list of current students in class
+        $('tbody.testsInClass').append('<tr id="' + testInfo.testId + '"><td>' + testInfo.name + '</td><td>' + testInfo.description + '</td><td><button ng-click="tests.removeTestFromClass()">' + "Remove From Class" + '</button></td><td><button type="button" class="btn btn-default btn-md glyphicon glyphicon-time" data-toggle="modal" data-target="#' + testId + '"></button></td></tr>');
+      });
+
+      document.querySelector('#' + testId).remove();
+
     });
 
-    //update delete class location to student
-    // fb.child('teachers').child(user.uid).child('students').child(studentInfo.studentId).child('deleteClassId').update({'deleteClassId': deleteClassInStudentLocationId});
-    //push delete student location to class
-    // fb.child('teachers').child(user.uid).child('classes').child(classId).child('students').push(deleteStudentInClassLocationId).key();
-
-
-    //append student to list of current students in class
-    $('tbody.testsInClass').append('<tr id="' + testInfo.testId + '"><td>' + testInfo.name + '</td><td>' + testInfo.description + '</td><td><button ng-click="tests.removeTestFromClass()">' + "Remove From Class" + '</button></td><td><button type="button" class="btn btn-default btn-md glyphicon glyphicon-time" data-toggle="modal" data-target="#'+testId+'"></button></td></tr>');
-  });
-
-  document.querySelector('#' + testId).remove();
-
-});
-
-};
+  };
 }

@@ -36,29 +36,41 @@
             <li><a href='/#/students/info/{{student.studentId}}'>Student Info</a></li>
           </ul>
         </div>
-      </tr>
-      <tr ng-if="student.expanded" ng-repeat-end="" >
-        <td>
-          <p ng-if='student.expanded' ng-repeat='student in students.data'><strong>{{student.firstName}}'s Classes:</strong></p>
-          <ul ng-repeat="class in student.classes">
-            <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
+    </tr>
+    <tr ng-if="student.expanded" ng-repeat-end="">
+      <td>
+        <p ng-if='student.expanded' ng-repeat='student in students.data'>
+          <strong>{{student.firstName}}'s Classes:</strong>
+        </p>
+        <ul ng-repeat="class in student.classes">
+          <li>{{class.name}}
+            <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a>
+          </li>
           <ul>
-        </td>
-        <td>
-          <p ng-if='student.expanded' ng-repeat='student in students.data'><strong>{{student.firstName}}'s Performance Summary:</strong></p>
-          <ul ng-repeat="test in student.testTimes">
-            <li>Took {{test.timeTaken}} minutes on a {{test.standardTime}} minute test ({{test.testName}}) <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
+      </td>
+      <td>
+        <p ng-if='student.expanded' ng-repeat='student in students.data'>
+          <strong>{{student.firstName}}'s Performance Summary:</strong>
+        </p>
+        <ul ng-repeat="test in student.testTimes">
+          <li>Took {{test.timeTaken}} minutes on a {{test.standardTime}} minute test ({{test.testName}})
+            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+          </li>
           <ul>
-        </td>
-        <td>
-          <p ng-if='student.expanded' ng-repeat='student in students.data'><strong>{{student.firstName}}'s Average Time Over:</strong></p>
-          <ul ng-repeat="time in student.averageTimeOver">
-            <li>Takes {{time.averageTime}}% of allotted time to finish a test <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{time.studentId}}"></a></li>
+      </td>
+      <td>
+        <p ng-if='student.expanded' ng-repeat='student in students.data'>
+          <strong>{{student.firstName}}'s Average Time Over:</strong>
+        </p>
+        <ul ng-repeat="time in student.averageTimeOver">
+          <li>Takes {{time.averageTime}}% of allotted time to finish a test
+            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{time.studentId}}"></a>
+          </li>
           <ul>
-        </td>
-        <td></td>
-        <td></td>
-    </tbody>
-  </table>
+      </td>
+      <td></td>
+      <td></td>
+  </tbody>
+</table>
 
-  <button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" data-toggle="modal" data-target="#newStudent"></button>
+<button type="button" class="btn btn-primary btn-sm glyphicon glyphicon-plus" data-toggle="modal" data-target="#newStudent"></button>

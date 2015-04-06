@@ -13,47 +13,47 @@ function testFactory($http, BASE_URL) {
 
 
 
-      $.getJSON(BASE_URL + '/teachers/' + user.uid + '/tests/' + testId + '.json', function (data) {
+      $.getJSON(BASE_URL + '/teachers/' + user.uid + '/tests/' + testId + '.json', function(data) {
         console.log(data);
         var percentageOver = ((student.timeTaken / data.standardTime) * 100) - 100;
         console.log(percentageOver);
 
 
-//update the test object with student time data
-      fb.child('teachers').child(user.uid).child('tests').child(testId).child('studentTimes').push({
-        'firstName': student.firstName,
-        'lastName': student.lastName,
-        'timeTaken': student.timeTaken,
-        'studentId': student.studentId,
-        'percentageOver': percentageOver,
-        'standardTime': testInfo.standardTime
+        //update the test object with student time data
+        fb.child('teachers').child(user.uid).child('tests').child(testId).child('studentTimes').push({
+          'firstName': student.firstName,
+          'lastName': student.lastName,
+          'timeTaken': student.timeTaken,
+          'studentId': student.studentId,
+          'percentageOver': percentageOver,
+          'standardTime': testInfo.standardTime
+
+        });
+        //update the class object with student time data
+        fb.child('teachers').child(user.uid).child('classes').child(classId).child('testTimes').push({
+          'firstName': student.firstName,
+          'lastName': student.lastName,
+          'timeTaken': student.timeTaken,
+          'studentId': student.studentId,
+          'percentageOver': percentageOver,
+          'standardTime': data.standardTime,
+          'testName': testInfo.name,
+          'testId': testInfo.testId
+        });
+        //update the student object with the student time data
+        fb.child('teachers').child(user.uid).child('students').child(student.studentId).child('testTimes').push({
+          'timeTaken': student.timeTaken,
+          'percentageOver': percentageOver,
+          'standardTime': testInfo.standardTime,
+          'testName': testInfo.name,
+          'testId': testInfo.testId
+        });
 
       });
-//update the class object with student time data
-      fb.child('teachers').child(user.uid).child('classes').child(classId).child('testTimes').push({
-        'firstName': student.firstName,
-        'lastName': student.lastName,
-        'timeTaken': student.timeTaken,
-        'studentId': student.studentId,
-        'percentageOver': percentageOver,
-        'standardTime': data.standardTime,
-        'testName': testInfo.name,
-        'testId': testInfo.testId
-      });
-//update the student object with the student time data
-      fb.child('teachers').child(user.uid).child('students').child(student.studentId).child('testTimes').push({
-        'timeTaken': student.timeTaken,
-        'percentageOver': percentageOver,
-        'standardTime': testInfo.standardTime,
-        'testName': testInfo.name,
-        'testId': testInfo.testId
-      });
-
-    });
 
     },
 
-    update: function (id, data, cb) {
+    update: function(id, data, cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
 
@@ -61,14 +61,14 @@ function testFactory($http, BASE_URL) {
 
       $http
         .put(url, data)
-        .success(function (res) {
+        .success(function(res) {
           if (typeof cb === 'function') {
             cb(res);
           }
         });
     },
 
-    findOne: function (id, cb) {
+    findOne: function(id, cb) {
       console.log(id);
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
@@ -76,7 +76,7 @@ function testFactory($http, BASE_URL) {
 
       $http
         .get(BASE_URL + '/teachers/' + user.uid + '/tests/' + id + '.json')
-        .success(function (data) {
+        .success(function(data) {
           cb(data);
           console.log(data);
         });
@@ -87,23 +87,23 @@ function testFactory($http, BASE_URL) {
       var user = fb.getAuth();
 
       $http
-      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/testIds.json')
-      .success(function(tests) {
-        var array = [];
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/testIds.json')
+        .success(function(tests) {
+          var array = [];
 
-        if (tests) {
-          $.each(tests, function(key, value) {
-            $http
-              .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + value + '.json')
-              .success(function(data) {
-                array.push(data);
-                cb(array);
-              });
+          if (tests) {
+            $.each(tests, function(key, value) {
+              $http
+                .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + value + '.json')
+                .success(function(data) {
+                  array.push(data);
+                  cb(array);
+                });
 
-          });
-        }
+            });
+          }
 
-      });
+        });
 
     },
 
@@ -112,23 +112,23 @@ function testFactory($http, BASE_URL) {
       var user = fb.getAuth();
 
       $http
-      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + id + '/classes.json')
-      .success(function(tests) {
-        var array = [];
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + id + '/classes.json')
+        .success(function(tests) {
+          var array = [];
 
-        if (tests) {
-          $.each(tests, function(key, value) {
-            $http
-              .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + value + '.json')
-              .success(function(data) {
-                array.push(data);
-                cb(array);
-              });
+          if (tests) {
+            $.each(tests, function(key, value) {
+              $http
+                .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/tests/' + value + '.json')
+                .success(function(data) {
+                  array.push(data);
+                  cb(array);
+                });
 
-          });
-        }
+            });
+          }
 
-      });
+        });
 
     },
     findAllTestsInClass: function(id, cb) {
@@ -138,12 +138,12 @@ function testFactory($http, BASE_URL) {
       console.log(id);
 
       $http
-      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/testInfo.json')
-      .success(function(tests) {
-        cb(tests);
-        console.log(tests);
+        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/classes/' + id + '/testInfo.json')
+        .success(function(tests) {
+          cb(tests);
+          console.log(tests);
 
-      });
+        });
 
     }
 
@@ -151,13 +151,6 @@ function testFactory($http, BASE_URL) {
 
   };
 }
-
-
-
-
-
-
-
 
 
 

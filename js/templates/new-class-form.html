@@ -1,10 +1,10 @@
-
-
 <div class="modal fade" id="newClass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         <h4 class="modal-title" id="myModalLabel">Create New Class</h4>
       </div>
       <form class="modal-body" ng-submit='new.submit("classes")'>
@@ -16,14 +16,14 @@
           <label for="gradeLevel">Grade Level:</label>
           <input id="gradeLevel" class="form-control" ng-model='new.thing.gradeLevel' type='text' placeholder='Grade level'>
         </div>
-          <div class="modal-footer">
-            <div class='form-group'>
-              <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
-            </div>
-            <div class='form-group'>
-              <input type="submit" class="btn btn-primary form-control" value='Submit'>
+        <div class="modal-footer">
+          <div class='form-group'>
+            <button type="button" class="btn btn-default form-control" data-dismiss="modal">Close</button>
+          </div>
+          <div class='form-group'>
+            <input type="submit" class="btn btn-primary form-control" value='Submit'>
           </div>
       </form>
+      </div>
     </div>
   </div>
-</div>

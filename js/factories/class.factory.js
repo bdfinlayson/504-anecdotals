@@ -7,7 +7,7 @@ function classFactory($http, BASE_URL) {
 
   return {
 
-    update: function (id, data, cb) {
+    update: function(id, data, cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
 
@@ -15,14 +15,14 @@ function classFactory($http, BASE_URL) {
 
       $http
         .put(url, data)
-        .success(function (res) {
+        .success(function(res) {
           if (typeof cb === 'function') {
             cb(res);
           }
         });
     },
 
-    findOne: function (id, cb) {
+    findOne: function(id, cb) {
       console.log(id)
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
@@ -30,7 +30,7 @@ function classFactory($http, BASE_URL) {
 
       $http
         .get(BASE_URL + '/teachers/' + user.uid + '/classes/' + id + '.json')
-        .success(function (data) {
+        .success(function(data) {
           cb(data);
           console.log(data);
         });
@@ -74,13 +74,13 @@ function classFactory($http, BASE_URL) {
           //       .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '/students/' + value + '.json')
           //       .success(function(data) {
           //         array.push(data);
-                  cb(data);
-                });
+          cb(data);
+        });
 
-            // });
-          // }
+      // });
+      // }
 
-        // });
+      // });
     }
   };
 }

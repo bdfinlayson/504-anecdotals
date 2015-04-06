@@ -7,14 +7,14 @@ function portalFactory($http, BASE_URL) {
 
   return {
 
-    findOne: function (cb) {
+    findOne: function(cb) {
       var fb = new Firebase('https://504-anecdotals.firebaseio.com');
       var user = fb.getAuth();
       console.log(user);
 
       $http
         .get(BASE_URL + '/teachers/' + user.uid + '.json')
-        .success(function (data) {
+        .success(function(data) {
           cb(data);
           console.log(data);
         });

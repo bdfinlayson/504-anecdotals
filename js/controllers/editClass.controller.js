@@ -1,77 +1,77 @@
 angular
   .module('anecdotals')
-  .controller('EditClassController',EditClassController);
+  .controller('EditClassController', EditClassController);
 
-  function EditClassController($routeParams, $http, $location, studentFactory, testFactory, classFactory, BASE_URL) {
-    'use strict';
+function EditClassController($routeParams, $http, $location, studentFactory, testFactory, classFactory, BASE_URL) {
+  'use strict';
 
-    var vm = this;
-    var path = $location.$$path;
-    var pathId = path.slice(14);
-    // var pathId2 = path.slice(14);
-    var classInfo;
-    var classStudentInfo;
+  var vm = this;
+  var path = $location.$$path;
+  var pathId = path.slice(14);
+  // var pathId2 = path.slice(14);
+  var classInfo;
+  var classStudentInfo;
 
-    classFactory.findAllStudents(pathId, function(students) {
-      vm.data = students;
-      classStudentInfo = students;
-      console.log(students, vm.students);
-    });
-
-    testFactory.findAllTestsInClass(pathId, function (tests) {
-      console.log('from the test controller', tests);
-      vm.data = tests;
+  classFactory.findAllStudents(pathId, function(students) {
+    vm.data = students;
+    classStudentInfo = students;
+    console.log(students, vm.students);
   });
 
-    classFactory.findOne(pathId, function (clss) {
-      vm.newClass = clss;
-      classInfo = clss;
-      console.log(clss, vm.newClass);
-    });
-
-
-
-    vm.deleteClass = function (cb) {
-      var fb = new Firebase('https://504-anecdotals.firebaseio.com');
-      var user = fb.getAuth();
-      console.log(user);
-      var data;
-      $http
-        .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '.json')
-        .success(function(cb) {
-          data = cb;
-          console.log(data);
-        });
-
-      var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
-      var teacherUrl = BASE_URL + '/teachers/' + user.uid + '/classIds/' + classInfo.deleteId + '.json';
-
-      $http
-        .delete(teacherUrl)
-        .success(function () {
-          console.log('class in teacher deleted');
-        });
-
-      $http
-        .delete(url)
-        .success(function () {
-          console.log('class deleted');
-          $http
-            .delete(url)
-            .success(function () {
-              console.log('class deleted');
-            });
-        });
-
-    };
-
-  vm.addOrEditClass = function (studentId) {
-  classFactory.update(pathId, vm.newClass, function () {
-    $location.path('/classes/');
+  testFactory.findAllTestsInClass(pathId, function(tests) {
+    console.log('from the test controller', tests);
+    vm.data = tests;
   });
-};
 
-  vm.removeStudentFromClass = function (studentId, removeStudentFromClass, removeClassFromStudent, deleteStudentInfoFromClass) {
+  classFactory.findOne(pathId, function(clss) {
+    vm.newClass = clss;
+    classInfo = clss;
+    console.log(clss, vm.newClass);
+  });
+
+
+
+  vm.deleteClass = function(cb) {
+    var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+    var user = fb.getAuth();
+    console.log(user);
+    var data;
+    $http
+      .get('https://504-anecdotals.firebaseio.com/teachers/' + user.uid + '.json')
+      .success(function(cb) {
+        data = cb;
+        console.log(data);
+      });
+
+    var url = BASE_URL + '/teachers/' + user.uid + '/classes/' + pathId + '.json';
+    var teacherUrl = BASE_URL + '/teachers/' + user.uid + '/classIds/' + classInfo.deleteId + '.json';
+
+    $http
+      .delete(teacherUrl)
+      .success(function() {
+        console.log('class in teacher deleted');
+      });
+
+    $http
+      .delete(url)
+      .success(function() {
+        console.log('class deleted');
+        $http
+          .delete(url)
+          .success(function() {
+            console.log('class deleted');
+          });
+      });
+
+  };
+
+  vm.addOrEditClass = function(studentId) {
+    classFactory.update(pathId, vm.newClass, function() {
+      $location.path('/classes/');
+    });
+  };
+
+  vm.removeStudentFromClass = function(studentId, removeStudentFromClass, removeClassFromStudent, deleteStudentInfoFromClass) {
     console.log(studentId, removeStudentFromClass, removeClassFromStudent, deleteStudentInfoFromClass);
     var fb = new Firebase('https://504-anecdotals.firebaseio.com');
     var user = fb.getAuth();
@@ -131,60 +131,60 @@ angular
     //   });
   };
 
-// vm.sendTestResults = function () {
-// testFactory.update(pathId, vm.newStudent, function () {
-//   $location.path('/students/');
-// });
-// };
-vm.removeTestFromClass = function (testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass) {
-  console.log(testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass);
-  var fb = new Firebase('https://504-anecdotals.firebaseio.com');
-  var user = fb.getAuth();
-  console.log(user);
-  var data;
+  // vm.sendTestResults = function () {
+  // testFactory.update(pathId, vm.newStudent, function () {
+  //   $location.path('/students/');
+  // });
+  // };
+  vm.removeTestFromClass = function(testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass) {
+    console.log(testId, removeTestFromClass, removeClassFromTest, deleteTestInfoFromClass);
+    var fb = new Firebase('https://504-anecdotals.firebaseio.com');
+    var user = fb.getAuth();
+    console.log(user);
+    var data;
 
-  //remove test id from "tests" in class
+    //remove test id from "tests" in class
 
-  fb.child('teachers').child(user.uid).child('classes').child(pathId).child('tests').child(removeTestFromClass).remove();
+    fb.child('teachers').child(user.uid).child('classes').child(pathId).child('tests').child(removeTestFromClass).remove();
 
-  //remove class id from test in "test/classes"
+    //remove class id from test in "test/classes"
 
-  fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').child(removeClassFromTest).remove();
+    fb.child('teachers').child(user.uid).child('tests').child(testId).child('classes').child(removeClassFromTest).remove();
 
-  //remove test info from class in "class/testInfo"
+    //remove test info from class in "class/testInfo"
 
-  fb.child('teachers').child(user.uid).child('classes').child(pathId).child('testInfo').child(deleteTestInfoFromClass).remove();
-  console.log('removed data from three locations');
+    fb.child('teachers').child(user.uid).child('classes').child(pathId).child('testInfo').child(deleteTestInfoFromClass).remove();
+    console.log('removed data from three locations');
 
-  document.querySelector('#' + testId).remove();
+    document.querySelector('#' + testId).remove();
 
-};
+  };
 
-vm.sendTestResults = function(student, testId, testInfo) {
-  console.log('sendTestResults function fired!', student, testId, testInfo);
+  vm.sendTestResults = function(student, testId, testInfo) {
+    console.log('sendTestResults function fired!', student, testId, testInfo);
 
-  var vm = this;
-  console.log(this);
-  var path = $location.$$path;
-  var classId = path.slice(14);
-  console.log(student);
-  $('input[type="number"]').val('');
+    var vm = this;
+    console.log(this);
+    var path = $location.$$path;
+    var classId = path.slice(14);
+    console.log(student);
+    $('input[type="number"]').val('');
 
-  $('#' + student.studentId).remove();
-
-
-testFactory.updateStudentTime(student, testId, testInfo, classId, function () {
-
-});
-};
-
-vm.clearValues = function() {
-  $('input[type="number"]').val('');
-  $('input[type="number"]').removeClass("ng-valid");
-  $('input[type="number"]').removeClass("ng-valid-required");
-  $('input[type="number"]').addClass("ng-invalid");
-  $('input[type="number"]').addClass("ng-invalid-required");
-};
+    $('#' + student.studentId).remove();
 
 
-  }
+    testFactory.updateStudentTime(student, testId, testInfo, classId, function() {
+
+    });
+  };
+
+  vm.clearValues = function() {
+    $('input[type="number"]').val('');
+    $('input[type="number"]').removeClass("ng-valid");
+    $('input[type="number"]').removeClass("ng-valid-required");
+    $('input[type="number"]').addClass("ng-invalid");
+    $('input[type="number"]').addClass("ng-invalid-required");
+  };
+
+
+}

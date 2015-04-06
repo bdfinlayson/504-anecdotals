@@ -182,10 +182,10 @@ angular
 
             // create function to update pie-chart. This will be used by histogram.
             pC.update = function(nD) {
-                piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
-                  .attrTween("d", arcTween);
-              };
-              // Utility function to be called on mouseover a pie slice.
+              piesvg.selectAll("path").data(pie(nD)).transition().duration(500)
+                .attrTween("d", arcTween);
+            };
+            // Utility function to be called on mouseover a pie slice.
             function mouseover(d) {
                 // call the update function of histogram with new data.
                 hG.update(fData.map(function(v) {
@@ -307,77 +307,77 @@ angular
         //     });
         //   });
 
-          var freqData = [{
-            State: 'Sally',
-            freq: {
-              low: 4786,
-              mid: 1319,
-              high: 249
-            }
-          }, {
-            State: 'Annie',
-            freq: {
-              low: 1101,
-              mid: 412,
-              high: 674
-            }
-          }, {
-            State: 'Joey',
-            freq: {
-              low: 932,
-              mid: 2149,
-              high: 418
-            }
-          }, {
-            State: 'Michelle',
-            freq: {
-              low: 832,
-              mid: 1152,
-              high: 1862
-            }
-          }, {
-            State: 'Bryan',
-            freq: {
-              low: 4481,
-              mid: 3304,
-              high: 948
-            }
-          }, {
-            State: 'Casey',
-            freq: {
-              low: 1619,
-              mid: 167,
-              high: 1063
-            }
-          }, {
-            State: 'Billy',
-            freq: {
-              low: 1819,
-              mid: 247,
-              high: 1203
-            }
-          }, {
-            State: 'John',
-            freq: {
-              low: 4498,
-              mid: 3852,
-              high: 942
-            }
-          }, {
-            State: 'Rob',
-            freq: {
-              low: 797,
-              mid: 1849,
-              high: 1534
-            }
-          }, {
-            State: 'Danielle',
-            freq: {
-              low: 162,
-              mid: 379,
-              high: 471
-            }
-          }];
+        var freqData = [{
+          State: 'Sally',
+          freq: {
+            low: 4786,
+            mid: 1319,
+            high: 249
+          }
+        }, {
+          State: 'Annie',
+          freq: {
+            low: 1101,
+            mid: 412,
+            high: 674
+          }
+        }, {
+          State: 'Joey',
+          freq: {
+            low: 932,
+            mid: 2149,
+            high: 418
+          }
+        }, {
+          State: 'Michelle',
+          freq: {
+            low: 832,
+            mid: 1152,
+            high: 1862
+          }
+        }, {
+          State: 'Bryan',
+          freq: {
+            low: 4481,
+            mid: 3304,
+            high: 948
+          }
+        }, {
+          State: 'Casey',
+          freq: {
+            low: 1619,
+            mid: 167,
+            high: 1063
+          }
+        }, {
+          State: 'Billy',
+          freq: {
+            low: 1819,
+            mid: 247,
+            high: 1203
+          }
+        }, {
+          State: 'John',
+          freq: {
+            low: 4498,
+            mid: 3852,
+            high: 942
+          }
+        }, {
+          State: 'Rob',
+          freq: {
+            low: 797,
+            mid: 1849,
+            high: 1534
+          }
+        }, {
+          State: 'Danielle',
+          freq: {
+            low: 162,
+            mid: 379,
+            high: 471
+          }
+        }];
 
         dashboard('#dashboard', freqData);
       }

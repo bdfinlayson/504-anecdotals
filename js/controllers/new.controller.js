@@ -46,13 +46,17 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
             tests: 'undefined'
           }).key();
 
-          fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'classId': classId } );
+          fb.child('teachers').child(user.uid).child('classes').child(classId).update({
+            'classId': classId
+          });
           $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.gradeLevel + '</td><td><button ng-if="!class.expanded" ng-click="class.expanded = true">+</button></td><td><div class="dropdown"><button id="dLabel" class="glyphicon glyphicon-cog" data-target="" href="" data-toggle="dropdown" area-haspopup="true" role="button" area-expanded="false">' + " " + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"><li><a href="/#/classes/edit/' + classId + '">' + "Edit Class" + '</a></li><li><a href="/#/classes/clSt/' + classId + '">' + "Add/Remove Students" + '</a></li><li><a href="/#/classes/edit-class-tests/' + classId + '">' + "Edit Tests" + '</a></li><li><a href="/#/classes/info/' + classId + '">' + "Class Info" + '</a></li></ul></div></td></tr>');
           clear();
 
 
           var deleteId = fb.child('teachers').child(user.uid).child('classIds').push(classId).key();
-          fb.child('teachers').child(user.uid).child('classes').child(classId).update( {'deleteId': deleteId } );
+          fb.child('teachers').child(user.uid).child('classes').child(classId).update({
+            'deleteId': deleteId
+          });
 
           // $('#alertSuccess').removeClass('hide');
 
@@ -72,12 +76,16 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
             'testTimes': 'undefined'
           }).key();
 
-          fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'studentId': studentId } );
+          fb.child('teachers').child(user.uid).child('students').child(studentId).update({
+            'studentId': studentId
+          });
           $('tbody').append('<tr><td>' + thing.firstName + '</td><td>' + thing.lastName + '</td><td>' + thing.additionalInfo + '</td><td><button ng-if="!class.expanded" ng-click="class.expanded = true">+</button></td><td><div class="dropdown"><button id="dLabel" class="glyphicon glyphicon-cog" data-target="" href="" data-toggle="dropdown" area-haspopup="true" role="button" area-expanded="false">' + " " + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"><li><a href="/#/students/edit/' + studentId + '">' + "Edit" + '</a></li><li><a href="/#/students/info/' + studentId + '">' + "Student Info" + '</a></li></ul></div></td></tr>');
           clear();
 
           var deleteId = fb.child('teachers').child(user.uid).child('studentIds').push(studentId).key();
-          fb.child('teachers').child(user.uid).child('students').child(studentId).update( {'deleteId': deleteId } );
+          fb.child('teachers').child(user.uid).child('students').child(studentId).update({
+            'deleteId': deleteId
+          });
 
           break;
         case (whatToMake === 'tests'):
@@ -96,12 +104,16 @@ function NewController($http, $rootScope, $scope, $location, BASE_URL) {
           }).key();
 
 
-          fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'testId': testId } );
+          fb.child('teachers').child(user.uid).child('tests').child(testId).update({
+            'testId': testId
+          });
           $('tbody').append('<tr><td>' + thing.name + '</td><td>' + thing.subject + '</td><td>' + thing.date + '</td><td>' + thing.description + '</td><td>' + thing.standardTime + '</td><td><button ng-if="!class.expanded" ng-click="class.expanded = true">+</button></td><td><div class="dropdown"><button id="dLabel" class="glyphicon glyphicon-cog" data-target="" href="" data-toggle="dropdown" area-haspopup="true" role="button" area-expanded="false">' + " " + '<span class="caret"></span></button><ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"><li><a href="/#/tests/edit/' + testId + '">' + "Edit" + '</a></li><li><a href="/#/tests/results/' + testId + '">' + "Results" + '</a></li><li><a href="/#/tests/info/' + testId + '">' + "Test Info" + '</a></li></ul></div></td></tr>');
           clear();
 
           var deleteId = fb.child('teachers').child(user.uid).child('testIds').push(testId).key();
-          fb.child('teachers').child(user.uid).child('tests').child(testId).update( {'deleteId': deleteId } );
+          fb.child('teachers').child(user.uid).child('tests').child(testId).update({
+            'deleteId': deleteId
+          });
           break;
         default:
           break;

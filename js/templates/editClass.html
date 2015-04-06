@@ -2,12 +2,12 @@
 
 
 <form name="students.newClassForm" ng-submit="classes.addOrEditClass()" novalidate>
-    <label>Name:</label>
-    <input ng-model="classes.newClass.name" placeholder="" value="'{{newClass.name}}'" required>
-    <br />
-    <label>Grade:</label>
-    <input ng-model="classes.newClass.gradeLevel" value='{{newClass.gradeLevel}}' required>
-    <br/>
+  <label>Name:</label>
+  <input ng-model="classes.newClass.name" placeholder="" value="'{{newClass.name}}'" required>
+  <br />
+  <label>Grade:</label>
+  <input ng-model="classes.newClass.gradeLevel" value='{{newClass.gradeLevel}}' required>
+  <br/>
   <input type="submit" value="Save">
   <button ng-click='classes.deleteClass()' preventDefault>Delete Class</button>
 </form>

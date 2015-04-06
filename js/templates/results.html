@@ -20,9 +20,13 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel" >Report Times for {{test.name}}</h4>
-        <p>Standard Time: <strong>{{test.standardTime}}</strong></p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Report Times for {{test.name}}</h4>
+        <p>Standard Time:
+          <strong>{{test.standardTime}}</strong>
+        </p>
       </div>
       <form name='test.resultsForm' role='form' class="modal-body" novalidate>
         <div ng-repeat="student in tests.newClass.studentInfo" class="form-group" name='resultsForm' id="{{student.studentId}}">
@@ -30,7 +34,9 @@
           <div class="input-group">
             <input class="form-control" id="student" ng-init="student.timeTaken=true" ng-model='student.timeTaken' type='number' placeholder='Time taken (in minutes)' required>
             <span class="input-group-btn" ng-if="student.timeTaken" class='animate-if'>
-              <button class="btn btn-success" type="button" ng-click="tests.sendTestResults(student, test.testId, test)">{{student.firstName}} took {{student.timeTaken}} minutes <div class="success glyphicon glyphicon-ok"></div></button>
+              <button class="btn btn-success" type="button" ng-click="tests.sendTestResults(student, test.testId, test)">{{student.firstName}} took {{student.timeTaken}} minutes
+                <div class="success glyphicon glyphicon-ok"></div>
+              </button>
             </span>
           </div>
         </div>
@@ -38,7 +44,8 @@
           <button type="button" class="btn btn-default form-control" data-dismiss="modal" ng-click="tests.clearValues()">Close</button>
         </div>
         <div class='form-group'>
-          <input type="submit" class="btn btn-success form-control" value='Submit All' ng-click="tests.sendTestResults(student)"> <!--TODO: make this submit all times -->
+          <input type="submit" class="btn btn-success form-control" value='Submit All' ng-click="tests.sendTestResults(student)">
+          <!--TODO: make this submit all times -->
         </div>
       </form>
     </div>

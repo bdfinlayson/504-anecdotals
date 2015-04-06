@@ -9,57 +9,66 @@
 </div>
 
 
-  <table ng-controller='ClassController as classes' class="table table-condensed table-hover table-responsive">
-    <thead>
-      <tr>
-        <th>Class Name</th>
-        <th>Grade Level</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody class='rowsOfData'>
-      <tr  ng-repeat-start="class in classes.data">
-        <td>{{class.name}}</td>
-        <td>{{class.gradeLevel}}</td>
-        <td>
-          <button ng-if="class.expanded" ng-click="class.expanded = false">-</button>
-          <button ng-if="!class.expanded" ng-click="class.expanded = true">+</button>
-        </td>
-        <td>
-          <div class="dropdown">
-            <button id="dLabel" class='glyphicon glyphicon-cog' data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-              <li><a href='/#/classes/edit/{{class.classId}}'>Edit Class</a></li>
-              <li><a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
-              <li><a href='/#/classes/clTr/{{class.classId}}'>Add/Remove Tests</a></li>
-              <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a><li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr ng-if="class.expanded" ng-repeat-end="" >
-        <td>
-          <p ng-if='class.expanded' ng-repeat='class in classes.data' ><strong>Tests used in {{class.name}}:</strong></p>
-          <ul ng-repeat="test in class.testInfo">
-            <li>{{test.name}} <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
+<table ng-controller='ClassController as classes' class="table table-condensed table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Class Name</th>
+      <th>Grade Level</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class='rowsOfData'>
+    <tr ng-repeat-start="class in classes.data">
+      <td>{{class.name}}</td>
+      <td>{{class.gradeLevel}}</td>
+      <td>
+        <button ng-if="class.expanded" ng-click="class.expanded = false">-</button>
+        <button ng-if="!class.expanded" ng-click="class.expanded = true">+</button>
+      </td>
+      <td>
+        <div class="dropdown">
+          <button id="dLabel" class='glyphicon glyphicon-cog' data-target="" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <li><a href='/#/classes/edit/{{class.classId}}'>Edit Class</a></li>
+            <li><a href='/#/classes/clSt/{{class.classId}}'>Add/Remove Students</a></li>
+            <li><a href='/#/classes/clTr/{{class.classId}}'>Add/Remove Tests</a></li>
+            <li><a href='/#/classes/info/{{class.classId}}'>Class Info</a>
+              <li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    <tr ng-if="class.expanded" ng-repeat-end="">
+      <td>
+        <p ng-if='class.expanded' ng-repeat='class in classes.data'>
+          <strong>Tests used in {{class.name}}:</strong>
+        </p>
+        <ul ng-repeat="test in class.testInfo">
+          <li>{{test.name}}
+            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+          </li>
           <ul>
-        </td>
-        <td>
-          <p ng-if='class.expanded' ng-repeat='class in classes.data'><strong>Students in {{class.name}}:</strong></p>
-          <ul ng-repeat="student in class.studentInfo">
-            <li>{{student.firstName}} {{student.lastName}} <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
+      </td>
+      <td>
+        <p ng-if='class.expanded' ng-repeat='class in classes.data'>
+          <strong>Students in {{class.name}}:</strong>
+        </p>
+        <ul ng-repeat="student in class.studentInfo">
+          <li>{{student.firstName}} {{student.lastName}}
+            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a>
+          </li>
           <ul>
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 <!-- <div ng-controller='ClassController as classes'>

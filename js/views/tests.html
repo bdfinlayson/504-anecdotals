@@ -44,24 +44,36 @@
         </div>
       </td>
     </tr>
-    <tr ng-if="test.expanded" ng-repeat-end="" >
+    <tr ng-if="test.expanded" ng-repeat-end="">
       <td>
-        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Classes using {{test.name}}:</strong></p>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data">
+          <strong>Classes using {{test.name}}:</strong>
+        </p>
         <ul ng-repeat="class in test.classes">
-          <li>{{class.name}} <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a></li>
-        <ul>
+          <li>{{class.name}}
+            <a class="glyphicon glyphicon-info-sign" href="/#/classes/info/{{class.classId}}"></a>
+          </li>
+          <ul>
       </td>
       <td>
-        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Students given {{test.name}}:</strong></p>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data">
+          <strong>Students given {{test.name}}:</strong>
+        </p>
         <ul ng-repeat="student in test.studentTimes">
-          <li>{{student.firstName}} {{student.lastName}}<a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a></li>
-        <ul>
+          <li>{{student.firstName}} {{student.lastName}}
+            <a class="glyphicon glyphicon-info-sign" href="/#/students/info/{{student.studentId}}"></a>
+          </li>
+          <ul>
       </td>
       <td>
-        <p ng-if='test.expanded' ng-repeat="test in tests.data"><strong>Average time taken on {{test.name}}:</strong></p>
+        <p ng-if='test.expanded' ng-repeat="test in tests.data">
+          <strong>Average time taken on {{test.name}}:</strong>
+        </p>
         <ul ng-repeat="time in test.timeInfo">
-          <li>The standard test time was {{time.standardTime}} minutes and students took an average of {{time.averageTime}} to complete the test <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a></li>
-        <ul>
+          <li>The standard test time was {{time.standardTime}} minutes and students took an average of {{time.averageTime}} to complete the test
+            <a class="glyphicon glyphicon-info-sign" href="/#/tests/info/{{test.testId}}"></a>
+          </li>
+          <ul>
       </td>
       <td></td>
       <td></td>
