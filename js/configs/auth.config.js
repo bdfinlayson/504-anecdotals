@@ -7,7 +7,7 @@ function authConfig($routeProvider) {
   'use strict';
   $routeProvider
     .when('/login', {
-      templateUrl: 'js/views/login.html',
+      templateUrl: './js/views/login.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       resolve: {
@@ -20,17 +20,17 @@ function authConfig($routeProvider) {
       }
     })
     .when('/logout', {
-      template: 'js/views/logout.html',
+      template: './js/views/logout.html',
       controller: 'LogoutController'
     })
     .when('/register', {
-      templateUrl: '/js/views/register.html',
+      templateUrl: './js/views/register.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: false
     })
     .when('/forgot', {
-      templateUrl: '/js/views/forgot.html',
+      templateUrl: './js/views/forgot.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: false

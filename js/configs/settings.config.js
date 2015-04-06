@@ -6,30 +6,30 @@ function SettingsConfig($routeProvider) {
   'use strict';
   $routeProvider
     .when('/settings', {
-      templateUrl: '/js/views/settings.html',
+      templateUrl: './js/views/settings.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: true
     })
     .when('/profile', {
-      templateUrl: '/js/views/profile.html',
+      templateUrl: './js/views/profile.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: true
     })
     .when('/manage-account', {
-      templateUrl: '/js/views/manage-account.html',
+      templateUrl: './js/views/manage-account.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: true
     })
     .when('/customize', {
-      templateUrl: '/js/views/customize.html',
+      templateUrl: './js/views/customize.html',
       controller: 'AuthController',
       controllerAs: 'auth',
       private: true
     })
     .otherwise({
-      redirectTo: '/home'
+      redirectTo: '/login'
     });
 }
